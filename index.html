@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <title>BiliBanner</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- 1. banner 挂载点 -->
+  <div id="bili-banner"></div>
+
+  <!-- 2. 引入构建产物 -->
+  <script src="dist/bilibanner.js"></script>
+
+  <!-- 3. 初始化，传入 banner 数据接口 URL -->
+  <script>
+    // 方法一：传 id → 自动拼接为 http://host/res/bilibanner/2022spring/manifest.json
+    BiliBanner.init('2022spring')
+
+    // 方法二：传完整 URL（两种方式并存互不影响）
+    // BiliBanner.init('https://api.bilibili.com/x/web-show/res/frontpage?resid=142')
+  </script>
+
+</body>
+
+</html>
