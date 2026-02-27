@@ -34,9 +34,9 @@ const trimHttp = (url) => (url ? url.replace(/^http:/, "") : "");
  * - 已是绝对路径（http/https// 开头）→ 原样返回（仅做 trimHttp）
  * - 相对路径 → 以 manifestUrl 所在目录为 base 拼接
  *
- * 例：manifestUrl = 'http://host/res/bilibanner/spring2022/manifest.json'
+ * 例：manifestUrl = 'http://{host}/res/bilibanner/spring2022/manifest.json'
  *     src = 'img/123.png'
- *     → 'http://host/res/bilibanner/spring2022/img/123.png'
+ *     → 'http://{host}/res/bilibanner/spring2022/img/123.png'
  *
  * @param {string} src         - JSON 中配置的路径
  * @param {string} manifestUrl - manifest.json 的完整请求 URL
