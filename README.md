@@ -1,2 +1,3 @@
-# bilibili_header.js
-通过sourceMap还原出的header.js源码
+## header.js
+
+通过`reverse-sourcemap`还原出的`header.js`源码
