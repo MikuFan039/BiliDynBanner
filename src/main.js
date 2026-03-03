@@ -3,7 +3,6 @@ import Banner from "./components/Banner.vue";
 
 // 资源根路径，修改此处后重新构建即可
 const BASE_URL = "http://localhost/res/bilibanner";
-
 // latest 的完整 URL，作为所有情况的最终 fallback
 const LATEST_URL = `${BASE_URL}/latest/manifest.json`;
 
@@ -19,19 +18,41 @@ const toApiUrl = (idOrUrl) => {
 };
 
 /**
- * 挂载 Vue 实例到 #banner
+ * 挂载 Vue 实例到 #bili-banner
  * @param {string} apiUrl      - 主请求地址
  * @param {string} fallbackUrl - 主请求失败时的备用地址
  */
+// 追踪当前挂载的实例
+let currentVm = null;
+let currentRoot = null;
+
 function mount(apiUrl, fallbackUrl) {
+  // 1. 销毁旧实例
+  if (currentVm) {
+    currentVm.$destroy();
+    currentVm = null;
+  }
+
+  // 2. 用新占位 div 原地替换旧根节点，位置不变
+  if (currentRoot && currentRoot.parentNode) {
+    const placeholder = document.createElement("div");
+    placeholder.id = "bili-banner";
+    currentRoot.parentNode.replaceChild(placeholder, currentRoot);
+    currentRoot = null;
+  }
+
+  // 3. 取占位 div
   const el = document.getElementById("bili-banner");
   if (!el) {
     console.error("[BiliBanner] 找不到 #bili-banner 挂载点");
     return;
   }
-  new Vue({
+
+  // 4. 挂载并记录根节点
+  currentVm = new Vue({
     render: (h) => h(Banner, { props: { apiUrl, fallbackUrl } }),
   }).$mount(el);
+  currentRoot = currentVm.$el;
 }
 
 /**
@@ -55,4 +76,11 @@ function initBiliBanner(idOrUrl) {
 // 挂载到全局
 window.BiliBanner = {
   init: initBiliBanner,
+  destroy() {
+    if (currentVm) {
+      currentVm.$destroy();
+      currentVm = null;
+      currentRoot = null;
+    }
+  },
 };

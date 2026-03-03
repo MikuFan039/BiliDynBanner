@@ -1,6 +1,6 @@
 {
   "name": "bilibanner",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Bilibili 动态 Banner 独立组件",
   "scripts": {
     "build": "webpack --config webpack.config.js"
