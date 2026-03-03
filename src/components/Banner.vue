@@ -1,29 +1,17 @@
 <template>
   <!-- banner 容器：动态banner启用时隐藏背景图（由AnimatedBanner接管），否则显示静态背景图 -->
-  <div
-    class="bili-banner"
-    :style="
-      animatedBannerShow
-        ? ''
-        : bannerImg
-        ? `background-image: url(${bannerImg})`
-        : ''
-    "
-  >
+  <div class="bili-banner" ref="banner"
+    :style="animatedBannerShow ? '' : (bannerImg ? `background-image: url(${bannerImg})` : '')">
     <!-- 动态分层视差 Banner -->
-    <AnimatedBanner
-      v-if="animatedBannerEnabled"
-      :config="animatedBannerConfig"
-      @change="(v) => (animatedBannerShow = v)"
-    />
-
+    <AnimatedBanner v-if="animatedBannerEnabled" :config="animatedBannerConfig" @change="v => animatedBannerShow = v" />
     <!-- 顶部渐变遮罩层，增加层次感 -->
-    <div class="taper-line"></div>
+    <div class="taper-line" ref="taperLine"></div>
   </div>
 </template>
 
 <script>
 import AnimatedBanner from "./animated-banner/index.vue";
+import ADVANCED_EXTENSIONS from "../advanced-extensions/index.js";
 import axios from "axios";
 
 // 去掉 URL 中的 http: 前缀，使其成为协议无关链接
@@ -33,29 +21,16 @@ const trimHttp = (url) => (url ? url.replace(/^http:/, "") : "");
  * 将 JSON 中的路径解析为绝对 URL。
  * - 已是绝对路径（http/https// 开头）→ 原样返回（仅做 trimHttp）
  * - 相对路径 → 以 manifestUrl 所在目录为 base 拼接
- *
- * 例：manifestUrl = 'http://{host}/res/bilibanner/spring2022/manifest.json'
- *     src = 'img/123.png'
- *     → 'http://{host}/res/bilibanner/spring2022/img/123.png'
- *
- * @param {string} src         - JSON 中配置的路径
- * @param {string} manifestUrl - manifest.json 的完整请求 URL
  */
 const resolveUrl = (src, manifestUrl) => {
   if (!src) return "";
-  // 已是绝对路径，直接处理协议头后返回
   if (/^(https?:)?\/\//.test(src)) return trimHttp(src);
-  // 取 manifestUrl 的目录部分（去掉文件名）作为 base
   const base = manifestUrl.substring(0, manifestUrl.lastIndexOf("/") + 1);
   return base + src;
 };
 
 /**
  * 递归遍历对象/数组，将所有 src 字段用 resolveUrl 处理。
- * 直接修改原对象（in-place），避免深拷贝开销。
- *
- * @param {any}    node        - 待处理的数据节点
- * @param {string} manifestUrl - manifest.json 的完整请求 URL
  */
 const resolveSrcFields = (node, manifestUrl) => {
   if (Array.isArray(node)) {
@@ -71,17 +46,49 @@ const resolveSrcFields = (node, manifestUrl) => {
   }
 };
 
+/**
+ * 处理 extensions.time 时间段扩展，根据当前时间选出对应的 layers 并合并进 config。
+ */
+const resolveTimeExtension = (config) => {
+  const timeMap = config.extensions?.time;
+  if (!timeMap) return;
+  // 当天已过秒数（对齐原始：(Date.now() - 今日零点毫秒) / 1000）
+  const secondsOfDay = (Date.now() - new Date().setHours(0, 0, 0, 0)) / 1000;
+  // key 转数字后升序排列
+  const keys = Object.keys(timeMap)
+    .map(Number)
+    .sort((a, b) => a - b);
+  // 找满足 keys[i] < secondsOfDay && (keys[i+1] > secondsOfDay || 最后一段) 的区间
+  let matched = null;
+  for (let i = 0; i < keys.length; i++) {
+    if (
+      keys[i] < secondsOfDay &&
+      (i + 1 === keys.length || keys[i + 1] > secondsOfDay)
+    ) {
+      matched = timeMap[String(keys[i])];
+      break;
+    }
+  }
+  if (matched) {
+    // 从该时间段的 config 数组中随机取一项，用其 layers 完全替换
+    const picked = matched[Math.floor(Math.random() * matched.length)];
+    config.layers = picked.layers || [];
+  }
+  // 清除 time 扩展，避免 AnimatedBanner 误判
+  delete config.extensions.time;
+};
+
 export default {
   name: "BiliBanner",
   components: { AnimatedBanner },
 
   props: {
-    // banner 数据接口 URL，由外部（main.js）传入
+    // banner 数据接口 URL
     apiUrl: {
       type: String,
       required: true,
     },
-    // fallback URL，主 apiUrl 请求失败时使用，由外部（main.js）传入
+    // fallback URL
     fallbackUrl: {
       type: String,
       default: null,
@@ -91,16 +98,16 @@ export default {
   data() {
     return {
       animatedBannerShow: false, // AnimatedBanner 加载成功后置为 true
-      animatedBannerEnabled: false, // 是否启用动态 banner（由接口数据决定）
-      animatedBannerConfig: null, // 动态 banner 配置（JSON 解析结果）
+      animatedBannerEnabled: false, // 是否启用动态 banner
+      animatedBannerConfig: null, // 动态 banner 配置
       locsData: null, // 接口返回的 banner 数据
-      activeUrl: null, // 实际生效的 URL（主请求成功用 apiUrl，否则用 fallbackUrl）
-      bannerDataFetched: null, // 数据请求 Promise，供 initAnimatedBanner() 等待
+      activeUrl: null, // 实际生效的请求 URL
+      bannerDataFetched: null, // 数据请求 Promise
     };
   },
 
   computed: {
-    // 静态背景图（pic 可能是相对路径，走 resolveUrl 处理）
+    // 静态背景图
     bannerImg() {
       return resolveUrl(this.locsData && this.locsData.pic, this.activeUrl);
     },
@@ -128,9 +135,7 @@ export default {
 
   methods: {
     /**
-     * 请求指定 URL 的 banner 数据，成功后写入 this.locsData 和 this.activeUrl
-     * 请求失败或业务 code !== 0 均抛出异常，供调用方决定是否 fallback
-     * @param {string} url
+     * 请求指定 URL 的 banner 数据，成功后写入 this.locsData 和 this.activeUrl。
      */
     fetchBannerData(url) {
       return axios
@@ -144,9 +149,7 @@ export default {
     },
 
     async initAnimatedBanner() {
-      // 等待接口数据就绪
       await this.bannerDataFetched;
-
       // 预加载静态背景图，确保无闪烁
       if (this.locsData?.pic) {
         const img = document.createElement("img");
@@ -157,16 +160,67 @@ export default {
         });
       }
 
-      // 若接口标记了分层动效，则解析配置并启用 AnimatedBanner
+      // 分支一：顶层 game 字段（完整自定义配置，优先级最高）
+      if (this.locsData?.game) {
+        try {
+          const extConfig =
+            typeof this.locsData.game === "string"
+              ? JSON.parse(this.locsData.game)
+              : this.locsData.game;
+          // 顶层 game 字段不绑定具体扩展模块，直接走通用游戏初始化
+          // 需在 game 中指定 extension 字段对应已注册的扩展名
+          const ext = ADVANCED_EXTENSIONS[extConfig.extension];
+          if (!ext) {
+            console.error(`[BiliBanner] 未找到高级扩展: ${game.extension}`);
+            return;
+          }
+          ext.init(
+            this.$refs.banner,
+            this.$refs.taperLine,
+            extConfig,
+            resolveUrl,
+            this.activeUrl
+          );
+        } catch (e) {
+          console.error("[BiliBanner] advanced ext config parse error", e);
+        }
+        return;
+      }
+
+      // 分支二：分层视差动效 banner（含高级扩展检测）
       if (this.locsData?.is_split_layer === 1) {
         try {
           const config = JSON.parse(this.locsData.split_layer);
-          // 递归将 config 中所有 src 字段的相对路径补全为绝对 URL
+          // 检查 extensions 中是否有已注册的高级扩展，取第一个匹配项
+          const advExtKey =
+            config.extensions &&
+            Object.keys(ADVANCED_EXTENSIONS).find((k) => config.extensions[k]);
+          if (advExtKey) {
+            const ext = ADVANCED_EXTENSIONS[advExtKey];
+            // 将扩展模块的默认 config 与 manifest 中的覆盖值合并
+            const extConfig = Object.assign(
+              {},
+              ext.config,
+              config.extensions[advExtKey]
+            );
+            ext.init(
+              this.$refs.banner,
+              this.$refs.taperLine,
+              extConfig,
+              resolveUrl,
+              this.activeUrl
+            );
+            return;
+          }
+
+          // 无游戏扩展，走普通视差动效流程
+          // 处理 extensions.time 时间段扩展，合并对应时间的 layers
+          resolveTimeExtension(config);
           resolveSrcFields(config, this.activeUrl);
           this.animatedBannerConfig = config;
           this.animatedBannerEnabled = true;
         } catch (e) {
-          console.error("animated_banner_config parse error", e);
+          console.error("[BiliBanner] animated_banner_config parse error", e);
         }
       }
     },

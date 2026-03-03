@@ -1,14 +1,15 @@
 {
   "name": "bilibanner",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Bilibili 动态 Banner 独立组件",
   "scripts": {
     "build": "webpack --config webpack.config.js"
   },
   "dependencies": {
     "axios": "^0.27.2",
-    "vue": "^2.7.14",
-    "gl-matrix": "^3.4.3"
+    "detect-gpu": "^4.0.34",
+    "gl-matrix": "^3.4.3",
+    "vue": "^2.7.14"
   },
   "devDependencies": {
     "@babel/core": "^7.21.0",
