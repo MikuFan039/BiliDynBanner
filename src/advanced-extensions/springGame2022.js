@@ -147,10 +147,12 @@ export default {
       let gameInstance;
       try {
         const loadingBase = insertBase(baseUrl);
+        let scriptEl;
         try {
-          await loadScript(scriptUrl + "?t=" + Date.now());
+          scriptEl = await loadScript(scriptUrl + "?t=" + Date.now());
         } finally {
           loadingBase.remove();
+          scriptEl?.remove();
         }
 
         const GameConstructor = window[extConfig.constructor];

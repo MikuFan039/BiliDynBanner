@@ -4,13 +4,43 @@
   box-sizing: border-box;
 }
 
-body {
-  background: #18191c;
-  font-family: "Microsoft YaHei", sans-serif;
-  min-height: 100vh;
+/* ── CSS 变量：深色（默认） ── */
+:root,
+[data-theme="dark"] {
+  --bg-body: #18191c;
+  --bg-controls: #1a1d22;
+  --bg-btn: #23262d;
+  --border-ctrl: #2a2d33;
+  --border-btn: #3a3d44;
+  --color-label: #888;
+  --color-btn: #ccc;
+  --color-theme-bg: #23262d;
+  --color-theme-border: #3a3d44;
+  --color-theme-text: #ccc;
 }
 
-#banner {
+/* ── CSS 变量：浅色 ── */
+[data-theme="light"] {
+  --bg-body: #f4f5f7;
+  --bg-controls: #ffffff;
+  --bg-btn: #f0f1f3;
+  --border-ctrl: #dde0e6;
+  --border-btn: #c8ccd4;
+  --color-label: #999;
+  --color-btn: #444;
+  --color-theme-bg: #f0f1f3;
+  --color-theme-border: #c8ccd4;
+  --color-theme-text: #444;
+}
+
+body {
+  background: var(--bg-body);
+  font-family: "Microsoft YaHei", sans-serif;
+  min-height: 100vh;
+  transition: background 0.2s;
+}
+
+#bili-banner {
   width: 100%;
   background: #000;
 }
@@ -20,23 +50,24 @@ body {
   flex-wrap: wrap;
   gap: 10px;
   padding: 20px 24px;
-  background: #1a1d22;
-  border-top: 1px solid #2a2d33;
+  background: var(--bg-controls);
+  border-top: 1px solid var(--border-ctrl);
+  transition: background 0.2s, border-color 0.2s;
 }
 
 .controls .label {
   width: 100%;
-  color: #888;
+  color: var(--color-label);
   font-size: 13px;
   margin-bottom: 2px;
 }
 
 .btn {
   padding: 8px 20px;
-  border: 1px solid #3a3d44;
+  border: 1px solid var(--border-btn);
   border-radius: 4px;
-  background: #23262d;
-  color: #ccc;
+  background: var(--bg-btn);
+  color: var(--color-btn);
   font-size: 14px;
   cursor: pointer;
   transition: all 0.15s;
@@ -52,4 +83,28 @@ body {
   background: #00a1d6;
   border-color: #00a1d6;
   color: #fff;
+}
+
+/* ── 右下角主题切换按钮 ── */
+.theme-toggle {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  padding: 8px 14px;
+  border: 1px solid var(--color-theme-border);
+  border-radius: 20px;
+  background: var(--color-theme-bg);
+  color: var(--color-theme-text);
+  font-size: 13px;
+  cursor: pointer;
+  outline: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  transition: all 0.15s;
+  z-index: 9999;
+  white-space: nowrap;
+}
+
+.theme-toggle:hover {
+  border-color: #00a1d6;
+  color: #00a1d6;
 }

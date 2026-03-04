@@ -13,7 +13,7 @@ export const loadScript = (src) => {
   script.crossOrigin = "anonymous";
   document.body.appendChild(script);
   return new Promise((resolve, reject) => {
-    script.onload = resolve;
+    script.onload = () => resolve(script);
     script.onerror = () => reject(new Error(`脚本加载失败: ${src}`));
   });
 };

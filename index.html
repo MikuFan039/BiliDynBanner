@@ -55,15 +55,42 @@
     <button class="btn" data-id="2025winter">2025冬 2025winter</button>
     <span class="label">未完待续...</span>
   </div>
+  <!-- 右下角主题切换按钮 -->
+  <button class="theme-toggle" id="themeToggle" title="切换主题"></button>
   <!-- 引入BannerJS -->
   <script src="dist/bilibanner.js"></script>
   <!-- <script src="res/js/bilibanner.js"></script> -->
   <!-- 初始化脚本 -->
   <script>
+    // ── 主题管理 ──────────────────────────────────────────────────────────────
+    const STORAGE_KEY = 'bili_theme'
+    const themeBtn = document.getElementById('themeToggle')
+    function applyTheme(theme) {
+      document.documentElement.setAttribute('data-theme', theme)
+      themeBtn.textContent = theme === 'dark' ? '☀️ 浅色' : '🌙 深色'
+    }
+    function getInitialTheme() {
+      const saved = localStorage.getItem(STORAGE_KEY)
+      if (saved) return saved
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+    }
+    applyTheme(getInitialTheme())
+    themeBtn.addEventListener('click', function () {
+      const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'
+      applyTheme(next)
+      localStorage.setItem(STORAGE_KEY, next)
+    })
+    // 系统主题变化时同步（用户未手动设置时）
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+      if (!localStorage.getItem(STORAGE_KEY)) {
+        applyTheme(e.matches ? 'dark' : 'light')
+      }
+    })
+    // ── Banner 切换 ───────────────────────────────────────────────────────────
     function switchBanner(id) {
-      $('#bili-banner').empty()
       BiliBanner.init(id === 'latest' ? undefined : id)
     }
+    // 点击按钮切换
     $('.btn').on('click', function () {
       $('.btn').removeClass('active')
       $(this).addClass('active')

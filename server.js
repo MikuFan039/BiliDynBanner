@@ -19,7 +19,7 @@ const MIME = {
 
 http
   .createServer((req, res) => {
-    const urlPath = req.url === "/" ? "/index.html" : req.url;
+    const urlPath = req.url === "/" ? "/index.html" : req.url.split("?")[0];
     const filePath = path.join(ROOT, urlPath);
 
     fs.readFile(filePath, (err, data) => {

@@ -181,12 +181,15 @@ export default {
       bgVideo.style.transform = "translateY(0%)";
 
       // 阶段一：加载脚本期间临时插入 <base>，加载完立即移除
+      // scriptEl 也在加载完后立即移除，避免重复进入时累积 <script> 标签
       {
         const baseEl = insertBase(baseUrl);
+        let scriptEl;
         try {
-          await loadScript(scriptUrl);
+          scriptEl = await loadScript(scriptUrl);
         } finally {
           baseEl.remove();
+          scriptEl?.remove();
         }
       }
 
