@@ -1,0 +1,64 @@
+{ "frames": [
+   {
+    "filename": "waterfall 0.ase",
+    "frame": { "x": 873, "y": 0, "w": 890, "h": 242 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 41, "y": 19, "w": 890, "h": 242 },
+    "sourceSize": { "w": 942, "h": 296 },
+    "duration": 100
+   },
+   {
+    "filename": "waterfall 1.ase",
+    "frame": { "x": 1763, "y": 0, "w": 888, "h": 241 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 50, "y": 17, "w": 888, "h": 241 },
+    "sourceSize": { "w": 942, "h": 296 },
+    "duration": 100
+   },
+   {
+    "filename": "waterfall 2.ase",
+    "frame": { "x": 0, "y": 0, "w": 873, "h": 249 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 56, "y": 16, "w": 873, "h": 249 },
+    "sourceSize": { "w": 942, "h": 296 },
+    "duration": 100
+   },
+   {
+    "filename": "waterfall 3.ase",
+    "frame": { "x": 873, "y": 242, "w": 843, "h": 233 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 67, "y": 20, "w": 843, "h": 233 },
+    "sourceSize": { "w": 942, "h": 296 },
+    "duration": 100
+   },
+   {
+    "filename": "waterfall 4.ase",
+    "frame": { "x": 1763, "y": 241, "w": 844, "h": 241 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 41, "y": 14, "w": 844, "h": 241 },
+    "sourceSize": { "w": 942, "h": 296 },
+    "duration": 100
+   }
+ ],
+ "meta": {
+  "app": "https://www.aseprite.org/",
+  "version": "1.2.40-x64",
+  "image": "waterfall.png",
+  "format": "RGBA8888",
+  "size": { "w": 2651, "h": 482 },
+  "scale": "1",
+  "frameTags": [
+   { "name": "f", "from": 0, "to": 4, "direction": "forward" }
+  ],
+  "layers": [
+   { "name": "Layer", "opacity": 255, "blendMode": "normal" }
+  ],
+  "slices": [
+  ]
+ }
+}

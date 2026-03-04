@@ -1,0 +1,64 @@
+{ "frames": [
+   {
+    "filename": "peoples 0.ase",
+    "frame": { "x": 0, "y": 0, "w": 227, "h": 100 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 17, "y": 23, "w": 227, "h": 100 },
+    "sourceSize": { "w": 263, "h": 141 },
+    "duration": 500
+   },
+   {
+    "filename": "peoples 1.ase",
+    "frame": { "x": 227, "y": 0, "w": 227, "h": 100 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 17, "y": 23, "w": 227, "h": 100 },
+    "sourceSize": { "w": 263, "h": 141 },
+    "duration": 500
+   },
+   {
+    "filename": "peoples 2.ase",
+    "frame": { "x": 0, "y": 100, "w": 227, "h": 100 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 17, "y": 23, "w": 227, "h": 100 },
+    "sourceSize": { "w": 263, "h": 141 },
+    "duration": 1000
+   },
+   {
+    "filename": "peoples 3.ase",
+    "frame": { "x": 227, "y": 0, "w": 227, "h": 100 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 17, "y": 23, "w": 227, "h": 100 },
+    "sourceSize": { "w": 263, "h": 141 },
+    "duration": 500
+   },
+   {
+    "filename": "peoples 4.ase",
+    "frame": { "x": 0, "y": 0, "w": 227, "h": 100 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 17, "y": 23, "w": 227, "h": 100 },
+    "sourceSize": { "w": 263, "h": 141 },
+    "duration": 100
+   }
+ ],
+ "meta": {
+  "app": "https://www.aseprite.org/",
+  "version": "1.2.40-x64",
+  "image": "peoples.png",
+  "format": "RGBA8888",
+  "size": { "w": 454, "h": 200 },
+  "scale": "1",
+  "frameTags": [
+   { "name": "f", "from": 0, "to": 4, "direction": "forward" }
+  ],
+  "layers": [
+   { "name": "Layer", "opacity": 255, "blendMode": "normal" }
+  ],
+  "slices": [
+  ]
+ }
+}

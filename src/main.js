@@ -2,7 +2,7 @@ import Vue from "vue";
 import Banner from "./components/Banner.vue";
 
 // 资源根路径，修改此处后重新构建即可
-const BASE_URL = "http://localhost/res/bilibanner";
+const BASE_URL = "http://localhost:8080/res/bilibanner";
 // latest 的完整 URL，作为所有情况的最终 fallback
 const LATEST_URL = `${BASE_URL}/latest/manifest.json`;
 

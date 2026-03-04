@@ -1,0 +1,55 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #18191c;
+  font-family: "Microsoft YaHei", sans-serif;
+  min-height: 100vh;
+}
+
+#banner {
+  width: 100%;
+  background: #000;
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 20px 24px;
+  background: #1a1d22;
+  border-top: 1px solid #2a2d33;
+}
+
+.controls .label {
+  width: 100%;
+  color: #888;
+  font-size: 13px;
+  margin-bottom: 2px;
+}
+
+.btn {
+  padding: 8px 20px;
+  border: 1px solid #3a3d44;
+  border-radius: 4px;
+  background: #23262d;
+  color: #ccc;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.15s;
+  outline: none;
+}
+
+.btn:hover {
+  border-color: #00a1d6;
+  color: #00a1d6;
+}
+
+.btn.active {
+  background: #00a1d6;
+  border-color: #00a1d6;
+  color: #fff;
+}
