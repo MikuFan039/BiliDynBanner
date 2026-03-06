@@ -18,6 +18,10 @@ npm install
 npm run build
 ```
 
+如需指定静态服务器地址，请修改`/src/main.js`中的`BASE_URL`
+
+~~也可修改构建后的`bilibanner.js`（搜索 localhost 并替换）~~
+
 构建完成后，`dist/bilibanner.js` 即为可嵌入任意页面的独立脚本。
 
 ### 3. 嵌入页面
@@ -44,13 +48,13 @@ npm run build
 </script>
 ```
 
-完整HTML文件请见`demo.html`
+完整 HTML 文件请见`demo.html`
 
 ---
 
 ## 系统要求
 
-如果要启用2022版春、夏、秋的动态banner，请确保你的设备和浏览器满足以下要求：
+如果要启用 2022 版春、夏、秋的动态 banner，请确保你的设备和浏览器满足以下要求：
 
 ### 对设备的要求：
 
@@ -60,9 +64,9 @@ npm run build
 ### 对浏览器的要求：
 
 1. 不支持`Safari`浏览器
-2. 支持`WebGL2`
-3. 支持`Shadow DOM`
-4. CSS支持`image-rendering: pixelated`
+2. 需支持`WebGL2`
+3. 需支持`Shadow DOM`
+4. CSS 需支持`image-rendering: pixelated`
 
 ### 快速检测：
 
