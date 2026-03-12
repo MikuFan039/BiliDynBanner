@@ -13,8 +13,8 @@ const iI = async (e) => {
         (e.muted = !0),
         (e.loop = !0),
         (e.src = l
-          ? "http://localhost/banner/data/blackboard/static/20220315/00979505aec5edd6e5c2f8c096fa0f62/kPbkWcX74M.mp4"
-          : "http://localhost/banner/data/blackboard/static/20220314/00979505aec5edd6e5c2f8c096fa0f62/ZlmaPe9AZv.mp4"),
+          ? "https://activity.hdslb.com/blackboard/static/20220315/00979505aec5edd6e5c2f8c096fa0f62/kPbkWcX74M.mp4"
+          : "https://activity.hdslb.com/blackboard/static/20220314/00979505aec5edd6e5c2f8c096fa0f62/ZlmaPe9AZv.mp4"),
         (e.playsInline = !0),
         (e.disablepictureinpicture = !0),
         (e.disableremoteplayback = !0),
@@ -42,18 +42,8 @@ const iI = async (e) => {
   )
     return;
   qe(
-    {
-      type: "appear",
-      c: "banner_game",
-      d: "entry",
-      e: "show",
-    },
-    {
-      msg: JSON.stringify({
-        id: 0,
-        game: "叶间穿行",
-      }),
-    }
+    { type: "appear", c: "banner_game", d: "entry", e: "show" },
+    { msg: JSON.stringify({ id: 0, game: "叶间穿行" }) }
   );
   const r = e.querySelector(".inner-logo"),
     s =
@@ -88,18 +78,8 @@ const iI = async (e) => {
       return;
     window.addEventListener("keydown", f),
       qe(
-        {
-          type: "click",
-          c: "banner_game",
-          d: "entry",
-          e: "click",
-        },
-        {
-          msg: JSON.stringify({
-            id: 0,
-            game: "叶间穿行",
-          }),
-        }
+        { type: "click", c: "banner_game", d: "entry", e: "click" },
+        { msg: JSON.stringify({ id: 0, game: "叶间穿行" }) }
       ),
       (d = !0),
       (u = performance.now()),
@@ -107,17 +87,14 @@ const iI = async (e) => {
       c.style.setProperty("display", "none"),
       null == s || s.style.setProperty("display", "none");
     const t = e.clientWidth / (16 / 3);
-    Object.assign(e.style, {
-      height: t + "px",
-      maxHeight: t + "px",
-    }),
+    Object.assign(e.style, { height: t + "px", maxHeight: t + "px" }),
       (o.style.top = "50%");
     const n = (() => {
         const e = document.createElement("video");
         return (
           (e.muted = !0),
           (e.src =
-            "http://localhost/banner/data/blackboard/static/20220314/00979505aec5edd6e5c2f8c096fa0f62/CmamSTNOdq.mp4"),
+            "https://activity.hdslb.com/blackboard/static/20220314/00979505aec5edd6e5c2f8c096fa0f62/CmamSTNOdq.mp4"),
           (e.playsInline = !0),
           (e.disablepictureinpicture = !0),
           (e.disableremoteplayback = !0),
@@ -149,16 +126,13 @@ const iI = async (e) => {
         document.body.appendChild(i),
         new Promise((e) => (i.onload = e))
       );
-    })("http://localhost/banner/XRG02U9wAU.js");
+    })(
+      "https://activity.hdslb.com/blackboard/static/20220324/00979505aec5edd6e5c2f8c096fa0f62/XRG02U9wAU.js"
+    );
     document.addEventListener("visibilitychange", () => {
       "hidden" === document.visibilityState
         ? qe(
-            {
-              type: "click",
-              c: "banner_game",
-              d: "extend",
-              e: "duration",
-            },
+            { type: "click", c: "banner_game", d: "extend", e: "duration" },
             {
               msg: JSON.stringify({
                 id: 0,
@@ -185,12 +159,7 @@ const iI = async (e) => {
           _ = b.init().then(() => {
             (w = performance.now()),
               qe(
-                {
-                  type: "tech",
-                  c: "banner_game",
-                  d: "load",
-                  e: "duration",
-                },
+                { type: "tech", c: "banner_game", d: "load", e: "duration" },
                 {
                   msg: JSON.stringify({
                     id: 0,
@@ -213,12 +182,7 @@ const iI = async (e) => {
           (d = !1),
             window.clearInterval(v),
             qe(
-              {
-                type: "click",
-                c: "banner_game",
-                d: "extend",
-                e: "duration",
-              },
+              { type: "click", c: "banner_game", d: "extend", e: "duration" },
               {
                 msg: JSON.stringify({
                   id: 0,
@@ -227,9 +191,7 @@ const iI = async (e) => {
                 }),
               }
             ),
-            Object.assign(e.style, {
-              height: m + "px",
-            }),
+            Object.assign(e.style, { height: m + "px" }),
             (o.style.top = "40%"),
             window.clearTimeout(p),
             (p = window.setTimeout(() => {
@@ -242,18 +204,8 @@ const iI = async (e) => {
           (v = window.setInterval(() => {
             performance.now() - b.lastActive > 3e5 &&
               (qe(
-                {
-                  type: "click",
-                  c: "banner_game",
-                  d: "end_page",
-                  e: "close",
-                },
-                {
-                  msg: JSON.stringify({
-                    id: 0,
-                    game: "叶间穿行",
-                  }),
-                }
+                { type: "click", c: "banner_game", d: "end_page", e: "close" },
+                { msg: JSON.stringify({ id: 0, game: "叶间穿行" }) }
               ),
               k(),
               b.destroy());

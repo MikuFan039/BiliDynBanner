@@ -1,4 +1,3 @@
-var g5 = A5;
 const k5 = (e) => {
     const t = document.createElement("script");
     return (
@@ -32,7 +31,7 @@ const k5 = (e) => {
         return;
       const s = yield Ur({
         benchmarksURL:
-          "http://localhost/res/banner/blackboard/static/00979505aec5edd6e5c2f8c096fa0f62",
+          "https://activity.hdslb.com/blackboard/static/00979505aec5edd6e5c2f8c096fa0f62",
       });
       if (s.tier < 2 || s.type === "FALLBACK") return;
       const r = (() => {
@@ -41,7 +40,7 @@ const k5 = (e) => {
             (L.muted = !0),
             (L.loop = !0),
             (L.src =
-              "http://localhost/res/banner/blackboard/activity68698/public/static/2xv.mp4"),
+              "https://activity.hdslb.com/blackboard/activity68698/public/static/2xv.mp4"),
             (L.playsInline = !0),
             (L.disablepictureinpicture = !0),
             (L.disableremoteplayback = !0),
@@ -66,7 +65,8 @@ const k5 = (e) => {
           document.querySelector(".bili-header__banner > .header-banner__inner")
         ),
         r.play();
-      const v = "http://localhost/res/banner/main.d177301ef5bc94ea7572.js";
+      const v =
+        "https://activity.hdslb.com/blackboard/activity68698/main.d177301ef5bc94ea7572.js";
       let h = !1,
         p = NaN;
       const u = (() => {
@@ -200,7 +200,7 @@ const w5 = {
         });
         const d = t5[n.value],
           [_, v] = yield oe.$get(
-            "http://localhost/res/banner/header.json",
+            "/x/web-show/page/header",
             { resource_id: d || 142 },
             {
               ctx: me ? Ge() : null,
@@ -215,7 +215,7 @@ const w5 = {
             ((u = t.value.litpic) == null
               ? void 0
               : u.indexOf(
-                  "//localhost/res/banner/bfs/archive/622017dd4b0140432962d3ce0c6db99d77d2e937.png"
+                  "//i0.hdslb.com/bfs/archive/622017dd4b0140432962d3ce0c6db99d77d2e937.png"
                 )) >= 0 &&
             ((t.value.url = ""),
             (t.value.name = ""),

@@ -1,4 +1,3 @@
-var p5 = _5;
 const m5 = (e) => {
     const t = document.createElement("script");
     return (
@@ -23,10 +22,12 @@ const m5 = (e) => {
       o = !/^((?!chrome|android).)*safari/i.test(navigator.userAgent),
       l = await Hr({
         benchmarksURL:
-          "http://localhost/res/banner/blackboard/static/00979505aec5edd6e5c2f8c096fa0f62",
+          "https://activity.hdslb.com/blackboard/static/00979505aec5edd6e5c2f8c096fa0f62",
       });
     if (!(t && n && i && o && l.tier >= 2 && l.type !== "FALLBACK")) return;
-    await m5("http://localhost/res/banner/rmt7XCXYp9.js");
+    await m5(
+      "https://activity.hdslb.com/blackboard/static/20220629/00979505aec5edd6e5c2f8c096fa0f62/rmt7XCXYp9.js"
+    );
     let _ = !1,
       u = NaN;
     const f = 0.6,
@@ -154,7 +155,7 @@ const f5 = {
       });
       const _ = p5[n.value],
         [u, f] = await te.$get(
-          "//localhost/res/banner/header.json",
+          "/x/web-show/page/header",
           { resource_id: _ || 142 },
           {
             ctx: pe ? We() : null,
@@ -169,7 +170,7 @@ const f5 = {
           ((h = t.value.litpic) == null
             ? void 0
             : h.indexOf(
-                "//localhost/res/banner/bfs/archive/5b8cfd2c03e653106b1c9c37ba2025e39afc0ad1.png"
+                "//i0.hdslb.com/bfs/archive/5b8cfd2c03e653106b1c9c37ba2025e39afc0ad1.png"
               )) > 0 &&
           ((t.value.url = ""),
           (t.value.name = ""),

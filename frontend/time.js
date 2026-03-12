@@ -1,4 +1,4 @@
-var De = {
+var ye = {
   props: { config: { required: !0 } },
   data: function () {
     return { entered: !1, visible: !1 };
@@ -18,7 +18,7 @@ var De = {
   },
   mounted: function () {
     var t = this;
-    return D()(
+    return S()(
       O.a.mark(function e() {
         var a,
           n,
@@ -27,10 +27,10 @@ var De = {
           s,
           l,
           c,
-          u,
           d,
-          m,
+          u,
           p,
+          m,
           h,
           f,
           v,
@@ -107,9 +107,9 @@ var De = {
                     break;
                   }
                   return (
-                    (u = t.config.extensions.time[l[c]]),
+                    (d = t.config.extensions.time[l[c]]),
                     (t.layerConfig =
-                      u[Math.floor(Math.random() * u.length)].layers),
+                      d[Math.floor(Math.random() * d.length)].layers),
                     e.abrupt("break", 19)
                   );
                 case 16:
@@ -122,7 +122,7 @@ var De = {
                     Promise.all(
                       t.layerConfig.map(
                         (function () {
-                          var t = D()(
+                          var t = S()(
                             O.a.mark(function t(e) {
                               return O.a.wrap(function (t) {
                                 for (;;)
@@ -133,7 +133,7 @@ var De = {
                                         Promise.all(
                                           e.resources.map(
                                             (function () {
-                                              var t = D()(
+                                              var t = S()(
                                                 O.a.mark(function t(i, a) {
                                                   var n, o, r, s;
                                                   return O.a.wrap(function (t) {
@@ -152,7 +152,7 @@ var De = {
                                                           }
                                                           return (
                                                             (t.next = 3),
-                                                            lt.a.get(i.src, {
+                                                            rt.a.get(i.src, {
                                                               responseType:
                                                                 "blob",
                                                             })
@@ -255,18 +255,18 @@ var De = {
                     e.abrupt("return")
                   );
                 case 28:
-                  if ((d = t.layerConfig).length || t.config.extensions) {
+                  if ((u = t.layerConfig).length || t.config.extensions) {
                     e.next = 31;
                     break;
                   }
                   return e.abrupt("return");
                 case 31:
                   if (
-                    ((m = t.$refs.container),
-                    (p = m.clientHeight),
-                    (h = m.clientWidth),
-                    (f = p / 155),
-                    d.forEach(function (t) {
+                    ((p = t.$refs.container),
+                    (m = p.clientHeight),
+                    (h = p.clientWidth),
+                    (f = m / 155),
+                    u.forEach(function (t) {
                       var e, i, a, n;
                       (t._initState = {
                         scale: 1,
@@ -312,9 +312,9 @@ var De = {
                             (o.width = o.dataset.width * f * r);
                         });
                     }),
-                    (v = d.map(function () {
+                    (v = u.map(function () {
                       var t = document.createElement("div");
-                      return t.classList.add("layer"), m.appendChild(t), t;
+                      return t.classList.add("layer"), p.appendChild(t), t;
                     })),
                     null !== (n = t.config.extensions) &&
                       void 0 !== n &&
@@ -339,7 +339,7 @@ var De = {
                     (_ = 0),
                     (y = 0),
                     (C = function (t) {
-                      var e = xe.apply(void 0, be()(t));
+                      var e = be.apply(void 0, ce()(t));
                       return function (t) {
                         return t > 0 ? e(t) : -e(-t);
                       };
@@ -350,7 +350,7 @@ var De = {
                         if (k === w) return;
                         (k = w),
                           v.map(function (t, e) {
-                            var i = d[e],
+                            var i = u[e],
                               a = t.firstChild;
                             if (a) {
                               var n = {
@@ -388,7 +388,7 @@ var De = {
                                   c = s.map(function (t) {
                                     return l(w) * t;
                                   }),
-                                  u = i._initState.translate.map(function (
+                                  d = i._initState.translate.map(function (
                                     t,
                                     e
                                   ) {
@@ -401,7 +401,7 @@ var De = {
                                         : a.initial) || 1)
                                     );
                                   });
-                                n.translate = u;
+                                n.translate = d;
                               }
                               if (
                                 ((a.style.transform =
@@ -412,20 +412,20 @@ var De = {
                                   "rotate(".concat(n.rotate, "deg)")),
                                 i.blur)
                               ) {
-                                var m =
+                                var p =
                                     (i.blur.offset || 0) *
                                     (i.blur.offsetCurve
                                       ? C(i.blur.offsetCurve)
                                       : function (t) {
                                           return t;
                                         })(w),
-                                  p = 0;
+                                  m = 0;
                                 i.blur.wrap && "clamp" !== i.blur.wrap
                                   ? "alternate" === i.blur.wrap &&
-                                    (p = Math.abs(i._initState.blur + m))
-                                  : (p = Math.max(0, i._initState.blur + m)),
+                                    (m = Math.abs(i._initState.blur + p))
+                                  : (m = Math.max(0, i._initState.blur + p)),
                                   (a.style.filter =
-                                    p < 1e-4 ? "" : "blur(".concat(p, "px)"));
+                                    m < 1e-4 ? "" : "blur(".concat(m, "px)"));
                               }
                               if (i.opacity) {
                                 var h =
@@ -458,7 +458,7 @@ var De = {
                         console.error(e), t.$emit("change", !1);
                       }
                     }),
-                    d.map(function (t, e) {
+                    u.map(function (t, e) {
                       var i = t.resources[0].el;
                       v[e].appendChild(i),
                         "VIDEO" === i.tagName && i.play(),
@@ -489,7 +489,7 @@ var De = {
                     (e.prev = 49),
                     (e.next = 52),
                     Promise.resolve().then(function () {
-                      return Le(i(838));
+                      return _e(i(838));
                     })
                   );
                 case 52:
@@ -525,7 +525,7 @@ var De = {
                       (t.entered = !1), x();
                     }),
                     (t.handleMouseMove = function (e) {
-                      document.documentElement.scrollTop + e.clientY < p
+                      document.documentElement.scrollTop + e.clientY < m
                         ? (t.entered || ((t.entered = !0), (_ = e.clientX)),
                           (w = (e.clientX - _) / h),
                           cancelAnimationFrame(y),
@@ -540,10 +540,10 @@ var De = {
                         });
                     }),
                     (t.handleResize = function (e) {
-                      (p = m.clientHeight),
-                        (h = m.clientWidth),
-                        (f = p / 155),
-                        d.forEach(function (t) {
+                      (m = p.clientHeight),
+                        (h = p.clientWidth),
+                        (f = m / 155),
+                        u.forEach(function (t) {
                           t.resources.forEach(function (e) {
                             var i,
                               a,
@@ -608,7 +608,7 @@ var De = {
         return {
           version: "1",
           layers: t.map(function (t, e) {
-            var i, a, n, o, r, s, l, c, u, d, m, p;
+            var i, a, n, o, r, s, l, c, d, u, p, m;
             return {
               id: e,
               resources: t.images.map(function (t, e) {
@@ -616,7 +616,7 @@ var De = {
                   for (var e = 1; e < arguments.length; e++) {
                     var i = null != arguments[e] ? arguments[e] : {};
                     e % 2
-                      ? Ie(Object(i), !0).forEach(function (e) {
+                      ? ge(Object(i), !0).forEach(function (e) {
                           T()(t, e, i[e]);
                         })
                       : Object.getOwnPropertyDescriptors
@@ -624,7 +624,7 @@ var De = {
                           t,
                           Object.getOwnPropertyDescriptors(i)
                         )
-                      : Ie(Object(i)).forEach(function (e) {
+                      : ge(Object(i)).forEach(function (e) {
                           Object.defineProperty(
                             t,
                             e,
@@ -665,19 +665,19 @@ var De = {
                     ? void 0
                     : c.translate,
                 offsetCurve:
-                  null === (u = t.offsetCurve) || void 0 === u
+                  null === (d = t.offsetCurve) || void 0 === d
                     ? void 0
-                    : u.translate,
+                    : d.translate,
               },
               blur: {
                 initial:
-                  null === (d = t.initial) || void 0 === d ? void 0 : d.blur,
+                  null === (u = t.initial) || void 0 === u ? void 0 : u.blur,
                 offset:
-                  null === (m = t.offset) || void 0 === m ? void 0 : m.blur,
+                  null === (p = t.offset) || void 0 === p ? void 0 : p.blur,
                 offsetCurve:
-                  null === (p = t.offsetCurve) || void 0 === p
+                  null === (m = t.offsetCurve) || void 0 === m
                     ? void 0
-                    : p.blur,
+                    : m.blur,
               },
             };
           }),

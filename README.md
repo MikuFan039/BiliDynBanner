@@ -1,45 +1,67 @@
 ## 伪代码 & 元数据
 
-1. 哔哩哔哩前端的关键部分混淆代码
+本分支包含以下内容：
 
-2. banner元数据
+1. 前端关键部分混淆代码
+2. banner 元数据
 
 ---
 
-## `frontend_res`文件夹
+## `frontend`文件夹
 
-这个文件夹是哔哩哔哩前端的关键部分混淆代码（用于处理banner元数据的`extensions`字段下的内容）
+这个文件夹是哔哩哔哩前端关键部分混淆代码（用于处理 banner 元数据中`extensions`字段下的内容）
 
-### `2021_time`
+### `time.js`
 
-这个文件来自于2021年的哔哩哔哩前端部分代码，用于随时间变化的banner
+这个文件来自于 2021 年的哔哩哔哩前端部分代码，用于随时间变化的 banner
+
+前端代码：
+
+```
+https://s1.hdslb.com/bfs/static/jinkela/international-home/international-home.63b8047ef517f94b4844261f548bcf2daf355953.js
+```
 
 示例视频：
 
-- [2021夏](https://www.bilibili.com/video/BV1DQ4y1R7EM/)
-- [2021秋](https://www.bilibili.com/video/BV1qf4y177AB/)
-- [2021冬](https://www.bilibili.com/video/BV1wr4y1X7Ri/)
+- [2021 夏](https://www.bilibili.com/video/BV1DQ4y1R7EM/)
+- [2021 秋](https://www.bilibili.com/video/BV1qf4y177AB/)
+- [2021 冬](https://www.bilibili.com/video/BV1wr4y1X7Ri/)
 
+### `springGame2022.js`
 
-### `2022_spring`
+这个文件来自于 2022 春的哔哩哔哩前端部分代码，用于小游戏"[风叶穿行](https://www.bilibili.com/blackboard/fe/activity-HQjQSdd3L8.html)"
 
-这个文件来自于2022年春的哔哩哔哩前端部分代码，用于小游戏"[风叶穿行](https://www.bilibili.com/blackboard/fe/activity-HQjQSdd3L8.html)"
+前端代码：
 
+```
+https://s1.hdslb.com/bfs/static/laputa-home/client/assets/index.b0cff094.js
+```
 
-### `2022_summer`
+### `summer2022.js`
 
-这个文件来自于2022夏的哔哩哔哩前端部分代码，用于当时的[雨声环境音banner](https://www.bilibili.com/video/BV1dv4y1g7ji/)
+这个文件来自于 2022 夏的哔哩哔哩前端部分代码，用于当时的[雨声环境音 banner](https://www.bilibili.com/video/BV1dv4y1g7ji/)
 
+前端代码：
 
-### `2022_autumn`
+```
+https://s1.hdslb.com/bfs/static/laputa-home/client/assets/index.22f9df5d.js
+```
 
-这个文件来自于2022夏的哔哩哔哩前端部分代码，用于当时的[户外环境音banner](https://www.bilibili.com/video/BV1Ne4y1H73m/)
+### `autumn2022.js`
+
+这个文件来自于 2022 秋的哔哩哔哩前端部分代码，用于当时的[户外环境音 banner](https://www.bilibili.com/video/BV1Ne4y1H73m/)
+
+前端代码：
+
+```
+https://s1.hdslb.com/bfs/static/laputa-home/client/assets/index.ea53ff87.js
+```
 
 ---
 
-## `header_res`文件夹
+## `header`文件夹
 
-这个文件夹是哔哩哔哩部分特殊动态banner的元数据（关键：`extensions`字段下的内容）
+这个文件夹是哔哩哔哩部分特殊动态 banner 的元数据（关键：`extensions`字段下的内容）
 
 ```json
 \"extensions\":{\"springGame2022\":{}}
