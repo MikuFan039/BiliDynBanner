@@ -3,6 +3,6 @@ node_modules/
 # 构建输出
 dist/
 # 文案备份
-docs/
+docs/*
 !docs/preview.png
 # 一些乱七八糟的文件
