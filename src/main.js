@@ -3,16 +3,16 @@ import Banner from "./components/Banner.vue";
 
 // 资源根路径，修改此处后重新构建即可
 const BASE_URL = "http://localhost:8080/res/bilibanner";
-// latest 的完整 URL，作为所有情况的最终 fallback
-const LATEST_URL = `${BASE_URL}/latest/manifest.json`;
+// error 的完整 URL，作为所有情况的最终 fallback
+const ERROR_URL = `${BASE_URL}/error/manifest.json`;
 
 /**
  * 将 id 或完整 URL 转换为 manifest 请求地址。
- * 未传参时直接返回 LATEST_URL。
+ * 未传参时直接返回 ERROR_URL。
  * @param {string} [idOrUrl]
  */
 const toApiUrl = (idOrUrl) => {
-  if (!idOrUrl) return LATEST_URL;
+  if (!idOrUrl) return ERROR_URL;
   const isUrl = /^(https?:)?\/\//.test(idOrUrl);
   return isUrl ? idOrUrl : `${BASE_URL}/${idOrUrl}/manifest.json`;
 };
@@ -59,17 +59,17 @@ function mount(apiUrl, fallbackUrl) {
  * 初始化 BiliBanner
  *
  * 用法：
- *   BiliBanner.init()                    → 直接加载 latest
- *   BiliBanner.init('2022spring')        → 加载 2022spring，失败则 fallback 到 latest
+ *   BiliBanner.init()                    → 直接加载 error
+ *   BiliBanner.init('2022spring')        → 加载 2022spring，失败则 fallback 到 error
  *   BiliBanner.init('https://example.com/manifest.json')
- *                                        → 加载指定 URL，失败则 fallback 到 latest
+ *                                        → 加载指定 URL，失败则 fallback 到 error
  *
- * @param {string} [idOrUrl] - banner id 或完整接口 URL，不传则直接加载 latest
+ * @param {string} [idOrUrl] - banner id 或完整接口 URL，不传则直接加载 error
  */
 function initBiliBanner(idOrUrl) {
   const apiUrl = toApiUrl(idOrUrl);
-  // 若主 URL 本身就是 latest，则无需 fallback（传 null Banner.vue 内会跳过）
-  const fallbackUrl = apiUrl === LATEST_URL ? null : LATEST_URL;
+  // 若主 URL 本身就是 error，则无需 fallback（传 null Banner.vue 内会跳过）
+  const fallbackUrl = apiUrl === ERROR_URL ? null : ERROR_URL;
   mount(apiUrl, fallbackUrl);
 }
 

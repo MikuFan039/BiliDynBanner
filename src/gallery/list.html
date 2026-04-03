@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html" charset="utf-8">
+  <link rel="shortcut icon" href="favicon.ico">
+  <title>全部动态Banner陈列</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* ── CSS 变量：深色（默认） ── */
+    :root,
+    [data-theme="dark"] {
+      --bg-body: #18191c;
+      --bg-controls: #1a1d22;
+      --bg-btn: #23262d;
+      --border-ctrl: #2a2d33;
+      --border-btn: #3a3d44;
+      --color-label: #888;
+      --color-btn: #ccc;
+      --color-theme-bg: #23262d;
+      --color-theme-border: #3a3d44;
+      --color-theme-text: #ccc;
+    }
+
+    /* ── CSS 变量：浅色 ── */
+    [data-theme="light"] {
+      --bg-body: #f4f5f7;
+      --bg-controls: #ffffff;
+      --bg-btn: #f0f1f3;
+      --border-ctrl: #dde0e6;
+      --border-btn: #c8ccd4;
+      --color-label: #999;
+      --color-btn: #444;
+      --color-theme-bg: #f0f1f3;
+      --color-theme-border: #c8ccd4;
+      --color-theme-text: #444;
+    }
+
+    body {
+      background: var(--bg-body);
+      font-family: "Microsoft YaHei", sans-serif;
+      min-height: 100vh;
+      transition: background 0.2s;
+    }
+
+    #bili-banner {
+      width: 100%;
+      background: #000;
+    }
+
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 20px 24px;
+      background: var(--bg-controls);
+      border-top: 1px solid var(--border-ctrl);
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    .controls .label {
+      width: 100%;
+      color: var(--color-label);
+      font-size: 13px;
+      margin-bottom: 2px;
+    }
+
+    .btn {
+      padding: 8px 20px;
+      border: 1px solid var(--border-btn);
+      border-radius: 4px;
+      background: var(--bg-btn);
+      color: var(--color-btn);
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.15s;
+      outline: none;
+    }
+
+    .btn:hover {
+      border-color: #00a1d6;
+      color: #00a1d6;
+    }
+
+    .btn.active {
+      background: #00a1d6;
+      border-color: #00a1d6;
+      color: #fff;
+    }
+
+    /* ── 右下角主题切换按钮 ── */
+    .theme-toggle {
+      position: fixed;
+      right: 24px;
+      bottom: 24px;
+      padding: 8px 14px;
+      border: 1px solid var(--color-theme-border);
+      border-radius: 20px;
+      background: var(--color-theme-bg);
+      color: var(--color-theme-text);
+      font-size: 13px;
+      cursor: pointer;
+      outline: none;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+      transition: all 0.15s;
+      z-index: 9999;
+      white-space: nowrap;
+    }
+
+    .theme-toggle:hover {
+      border-color: #00a1d6;
+      color: #00a1d6;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Banner挂载点 -->
+  <div id="bili-banner"></div>
+  <!-- 控制按钮 -->
+  <div class="controls">
+    <span class="label">最新</span>
+    <button class="btn" data-id="latest">最新 latest</button>
+    <span class="label">2020年</span>
+    <button class="btn" data-id="2020autumn">2020秋 2020autumn</button>
+    <button class="btn" data-id="2020winter">2020冬 2020winter</button>
+    <span class="label">2021年</span>
+    <button class="btn" data-id="2021spring">2021春 2021spring</button>
+    <button class="btn" data-id="2021summer">2021夏 2021summer</button>
+    <button class="btn" data-id="2021autumn">2021秋 2021autumn</button>
+    <button class="btn" data-id="2021winter">2021冬 2021winter</button>
+    <span class="label">2022年</span>
+    <button class="btn" data-id="2022spring">2022春（常规） 2022spring</button>
+    <button class="btn" data-id="2022summer">2022夏（常规） 2022summer</button>
+    <button class="btn" data-id="2022autumn">2022秋（常规） 2022autumn</button>
+    <button class="btn" data-id="2022springAdv">2022春（游戏） 2022springAdv</button>
+    <button class="btn" data-id="2022summerAdv">2022夏（游戏） 2022summerAdv</button>
+    <button class="btn" data-id="2022autumnAdv">2022秋（游戏） 2022autumnAdv</button>
+    <button class="btn" data-id="2022winter">2022冬 2022winter</button>
+    <span class="label">2023年</span>
+    <button class="btn" data-id="2023spring">2023春（第一版） 2023spring</button>
+    <button class="btn" data-id="2023springV2">2023春（第二版） 2023springV2</button>
+    <button class="btn" data-id="2023summer">2023夏（第一版） 2023summer</button>
+    <button class="btn" data-id="2023summerV2">2023夏（第二版） 2023summerV2</button>
+    <button class="btn" data-id="2023summerV3">2023夏（第三版） 2023summerV3</button>
+    <button class="btn" data-id="2023summerV4">2023夏（第四版） 2023summerV4</button>
+    <button class="btn" data-id="2023summerV5">2023夏（第五版） 2023summerV5</button>
+    <button class="btn" data-id="2023autumn">2023秋（第一版） 2023autumn</button>
+    <button class="btn" data-id="2023autumnV2">2023秋（第二版） 2023autumnV2</button>
+    <button class="btn" data-id="2023autumnV3">2023秋（第三版） 2023autumnV3</button>
+    <button class="btn" data-id="2023winter">2023冬（第一版） 2023winter</button>
+    <button class="btn" data-id="2023winterV2">2023冬（第二版） 2023winterV2</button>
+    <span class="label">2024年</span>
+    <button class="btn" data-id="2024spring">2024春 2024spring</button>
+    <button class="btn" data-id="2024summer">2024夏 2024summer</button>
+    <button class="btn" data-id="2024autumn">2024秋 2024autumn</button>
+    <button class="btn" data-id="2024winter">2024冬 2024winter</button>
+    <span class="label">2025年</span>
+    <button class="btn" data-id="2025spring">2025春 2025spring</button>
+    <button class="btn" data-id="2025summer">2025夏 2025summer</button>
+    <button class="btn" data-id="2025autumn">2025秋 2025autumn</button>
+    <button class="btn" data-id="2025winter">2025冬 2025winter</button>
+    <span class="label">未完待续...</span>
+  </div>
+  <!-- 右下角主题切换按钮 -->
+  <button class="theme-toggle" id="themeToggle" title="切换主题"></button>
+  <!-- 引入BannerJS -->
+  <script src="res/js/bilibanner.js"></script>
+  <!-- 初始化脚本 -->
+  <script>
+    // ── 主题管理 ──────────────────────────────────────────────────────────────
+    const STORAGE_KEY = 'bili_theme'
+    const themeBtn = document.getElementById('themeToggle')
+    function applyTheme(theme) {
+      document.documentElement.setAttribute('data-theme', theme)
+      themeBtn.textContent = theme === 'dark' ? '☀️ 浅色' : '🌙 深色'
+    }
+    function getInitialTheme() {
+      const saved = localStorage.getItem(STORAGE_KEY)
+      if (saved) return saved
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+    }
+    applyTheme(getInitialTheme())
+    themeBtn.addEventListener('click', function () {
+      const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'
+      applyTheme(next)
+      localStorage.setItem(STORAGE_KEY, next)
+    })
+    // 系统主题变化时同步（用户未手动设置时）
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+      if (!localStorage.getItem(STORAGE_KEY)) {
+        applyTheme(e.matches ? 'dark' : 'light')
+      }
+    })
+    // ── Banner 切换 ───────────────────────────────────────────────────────────
+    function switchBanner(id) {
+      BiliBanner.init(id === 'error' ? undefined : id)
+    }
+    // 获取所有按钮
+    const buttons = document.querySelectorAll('.btn')
+    // 绑定点击事件
+    buttons.forEach(btn => {
+      btn.addEventListener('click', function () {
+        // 移除所有按钮的 active 类
+        buttons.forEach(b => b.classList.remove('active'))
+        // 为当前按钮添加 active 类
+        this.classList.add('active')
+        // 切换 banner
+        switchBanner(this.dataset.id)
+      })
+    })
+    // 默认触发第一个按钮的点击
+    if (buttons.length) {
+      buttons[0].click()
+    }
+  </script>
+</body>
+
+</html>

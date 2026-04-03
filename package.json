@@ -1,11 +1,11 @@
 {
   "name": "bilibanner",
-  "version": "2.3.0",
+  "version": "3.0.0",
   "description": "Bilibili 动态 Banner 独立组件",
   "scripts": {
-    "build": "webpack --config webpack.config.js",
-    "serve": "node server.js",
-    "dev": "npm run build && node server.js"
+    "build": "node scripts/build.js",
+    "serve": "npm run build && node scripts/serve.js",
+    "garb": "node scripts/dlgarb.js"
   },
   "dependencies": {
     "axios": "^0.27.2",

@@ -11,7 +11,7 @@
 
 <script>
 import AnimatedBanner from "./animated-banner/index.vue";
-import ADVANCED_EXTENSIONS from "../advanced-extensions/index.js";
+import EXTENSIONS from "../extensions/index.js";
 import axios from "axios";
 
 // 去掉 URL 中的 http: 前缀，使其成为协议无关链接
@@ -74,7 +74,7 @@ const resolveTimeExtension = (config) => {
     const picked = matched[Math.floor(Math.random() * matched.length)];
     config.layers = picked.layers || [];
   }
-  // 清除 time 扩展，避免 AnimatedBanner 误判
+  // 清除 time 时间段扩展，避免 AnimatedBanner 误判
   delete config.extensions.time;
 };
 
@@ -107,9 +107,10 @@ export default {
   },
 
   computed: {
-    // 静态背景图
+    // 静态背景图：优先取 pic，降级取 litpic（部分旧 manifest 仅有 litpic 字段）
     bannerImg() {
-      return resolveUrl(this.locsData && this.locsData.pic, this.activeUrl);
+      const src = this.locsData && (this.locsData.pic || this.locsData.litpic);
+      return resolveUrl(src, this.activeUrl);
     },
   },
 
@@ -160,18 +161,18 @@ export default {
         });
       }
 
-      // 分支一：顶层 game 字段（完整自定义配置，优先级最高）
-      if (this.locsData?.game) {
+      // 分支一：顶层 advExt 字段（完整自定义配置，优先级最高）
+      if (this.locsData?.advExt) {
         try {
           const extConfig =
-            typeof this.locsData.game === "string"
-              ? JSON.parse(this.locsData.game)
-              : this.locsData.game;
-          // 顶层 game 字段不绑定具体扩展模块，直接走通用游戏初始化
-          // 需在 game 中指定 extension 字段对应已注册的扩展名
-          const ext = ADVANCED_EXTENSIONS[extConfig.extension];
+            typeof this.locsData.advExt === "string"
+              ? JSON.parse(this.locsData.advExt)
+              : this.locsData.advExt;
+          // 顶层 advExt 字段不绑定具体高级扩展模块，直接走通用扩展初始化
+          // 需在 advExt 中指定 extension 字段对应已注册的高级扩展名
+          const ext = EXTENSIONS[extConfig.extension];
           if (!ext) {
-            console.error(`[BiliBanner] 未找到高级扩展: ${game.extension}`);
+            console.error(`[BiliBanner] 未找到高级扩展: ${advExt.extension}`);
             return;
           }
           ext.init(
@@ -182,7 +183,7 @@ export default {
             this.activeUrl
           );
         } catch (e) {
-          console.error("[BiliBanner] advanced ext config parse error", e);
+          console.error("[BiliBanner] 高级扩展配置处理失败", e);
         }
         return;
       }
@@ -194,10 +195,10 @@ export default {
           // 检查 extensions 中是否有已注册的高级扩展，取第一个匹配项
           const advExtKey =
             config.extensions &&
-            Object.keys(ADVANCED_EXTENSIONS).find((k) => config.extensions[k]);
+            Object.keys(EXTENSIONS).find((k) => config.extensions[k]);
           if (advExtKey) {
-            const ext = ADVANCED_EXTENSIONS[advExtKey];
-            // 将扩展模块的默认 config 与 manifest 中的覆盖值合并
+            const ext = EXTENSIONS[advExtKey];
+            // 将高级扩展模块的默认 config 与 manifest 中的覆盖值合并
             const extConfig = Object.assign(
               {},
               ext.config,
@@ -213,14 +214,14 @@ export default {
             return;
           }
 
-          // 无游戏扩展，走普通视差动效流程
+          // 无高级扩展，走普通视差动效流程
           // 处理 extensions.time 时间段扩展，合并对应时间的 layers
           resolveTimeExtension(config);
           resolveSrcFields(config, this.activeUrl);
           this.animatedBannerConfig = config;
           this.animatedBannerEnabled = true;
         } catch (e) {
-          console.error("[BiliBanner] animated_banner_config parse error", e);
+          console.error("[BiliBanner] 动态Banner配置处理失败", e);
         }
       }
     },

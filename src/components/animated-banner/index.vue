@@ -95,7 +95,7 @@ export default {
     let containerWidth = container.clientWidth
     let containerScale = containerHeight / 155
 
-    // 初始化资源尺寸
+    // 初始化资源尺寸，并预计算多帧图层的 loopTime
     layerConfig.forEach(v => {
       v._initState = {
         scale: 1,
@@ -120,6 +120,18 @@ export default {
         el.height = el.dataset.height * containerScale * initial
         el.width = el.dataset.width * containerScale * initial
       })
+      // 多帧图层：累加各帧 duration，得出一轮循环总时长
+      // 只有所有帧都有 duration 时才启用帧动画（否则视为静态单帧）
+      if (v.resources.length > 1 && v.resources.every(r => r.duration > 0)) {
+        v._loopTime = v.resources.reduce((acc, r) => acc + r.duration, 0)
+        // 预计算每帧的累计起始时间，方便 af 中 O(n) 查找当前帧
+        let cursor = 0
+        v._frameStart = v.resources.map(r => {
+          const start = cursor
+          cursor += r.duration
+          return start
+        })
+      }
     })
 
     // 初始化图层
@@ -140,9 +152,26 @@ export default {
     }
     let lastDisplace = NaN
 
-    // 根据鼠标位置改变状态
+    // 根据鼠标位置改变状态，同时驱动多帧图层的帧切换
     const af = t => {
       try {
+        // 帧动画：无论 displace 是否变化都要检查是否需要切帧
+        layers.forEach((layer, i) => {
+          const v = layerConfig[i]
+          if (!v._loopTime) return
+          const elapsed = performance.now() % v._loopTime
+          // 找当前应显示的帧索引
+          let frameIdx = v._frameStart.findIndex((start, idx) => {
+            const next = v._frameStart[idx + 1] ?? v._loopTime
+            return elapsed >= start && elapsed < next
+          })
+          if (frameIdx < 0) frameIdx = 0
+          const targetEl = v.resources[frameIdx].el
+          if (layer.firstChild !== targetEl) {
+            layer.replaceChildren(targetEl)
+          }
+        })
+
         if (lastDisplace === displace) {
           return
         }
@@ -221,14 +250,26 @@ export default {
 
 
     // 初始化图层内图片和帧动画
+    // 多帧图层先插入第 0 帧占位，rAF 循环会实时切换；单帧图层直接插入唯一资源
+    let hasAnimatedLayer = false
     layerConfig.map((v, i) => {
       const a = v.resources[0].el
       layers[i].appendChild(a)
       if (a.tagName === 'VIDEO') {
         a.play()
       }
+      if (v._loopTime) hasAnimatedLayer = true
       requestAnimationFrame(af)
     })
+
+    // 若存在多帧图层，需要持续驱动 rAF（不依赖鼠标移动）
+    if (hasAnimatedLayer) {
+      const frameLoop = () => {
+        af(performance.now())
+        raf = requestAnimationFrame(frameLoop)
+      }
+      raf = requestAnimationFrame(frameLoop)
+    }
 
     const handleLeave = () => {
       const now = performance.now()
@@ -341,7 +382,8 @@ export default {
               resources: l.images.map((img, j) => {
                 return {
                   id: j,
-                  ...img,
+                  src: img.src,
+                  duration: img.duration, // 帧持续时间（毫秒），undefined 表示静态帧
                 }
               }),
               scale: {

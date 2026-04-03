@@ -1,3 +1,7 @@
+# 不可名状的黑洞
 node_modules/
+# 构建输出
 dist/
-releases_log.md
+# 文案备份
+docs/
+# 一些乱七八糟的文件

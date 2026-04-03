@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="utf-8">
+    <link rel="shortcut icon" href="favicon.ico">
+    <title>全部动态Banner陈列馆</title>
+
+    <!-- 从 CDN 引入`TimelineJS3` -->
+    <link rel="stylesheet" href="https://cdn.knightlab.com/libs/timeline3/latest/css/timeline.css">
+    <script src="https://cdn.knightlab.com/libs/timeline3/latest/js/timeline.js"></script>
+
+    <style>
+        /* ── CSS 变量 ── */
+        :root,
+        [data-theme="dark"] {
+            --bg: #0f1117;
+            --bg-panel: #181b23;
+            --bg-card: #1e2130;
+            --accent: #00c8ff;
+            --accent-dim: rgba(0, 200, 255, 0.12);
+            --text-primary: #e8eaf0;
+            --text-secondary: #7a8099;
+            --border: rgba(255, 255, 255, 0.07);
+            --shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+        }
+
+        [data-theme="light"] {
+            --bg: #f0f2f7;
+            --bg-panel: #ffffff;
+            --bg-card: #f7f8fc;
+            --accent: #0088bb;
+            --accent-dim: rgba(0, 136, 187, 0.1);
+            --text-primary: #1a1d2e;
+            --text-secondary: #6b7280;
+            --border: rgba(0, 0, 0, 0.08);
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--bg);
+            font-family: "Noto Sans SC", "Microsoft YaHei", sans-serif;
+            color: var(--text-primary);
+            min-height: 100vh;
+            flex-direction: column;
+            transition: background 0.25s, color 0.25s;
+        }
+
+        /* ── 顶部标题栏 ── */
+        .top-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 28px;
+            background: var(--bg-panel);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            transition: background 0.25s, border-color 0.25s;
+        }
+
+        .top-bar .title {
+            font-size: 15px;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+        }
+
+        .top-bar .title span {
+            color: var(--accent);
+        }
+
+        .top-bar .hint {
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin-left: 12px;
+        }
+
+        /* ── Banner 预览区 ── */
+        #bili-banner {
+            width: 100%;
+            background: #000;
+            flex-shrink: 0;
+        }
+
+        /* ── 当前 Banner 信息条 ── */
+        .banner-info-bar {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 9px 28px;
+            background: var(--bg-panel);
+            border-bottom: 1px solid var(--border);
+            transition: background 0.25s, border-color 0.25s;
+        }
+
+        .banner-info-bar .label {
+            font-size: 11px;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .banner-info-bar .name {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--accent);
+        }
+
+        .banner-info-bar .id-tag {
+            font-size: 12px;
+            color: var(--text-secondary);
+            font-family: "Courier New", monospace;
+            background: var(--accent-dim);
+            padding: 2px 8px;
+            border-radius: 4px;
+            border: 1px solid rgba(0, 200, 255, 0.15);
+        }
+
+        /* ── TimelineJS3 容器 ── */
+        #timeline-embed {
+            flex: 1;
+            min-height: 400px;
+        }
+
+        /* ── TimelineJS3 深色主题覆盖 ── */
+        [data-theme="dark"] .tl-timenav,
+        [data-theme="dark"] .tl-timenav-slider,
+        [data-theme="dark"] .tl-timeaxis-background {
+            background: #0f1117 !important;
+        }
+
+        [data-theme="dark"] .tl-timemarker .tl-timemarker-content-container {
+            background: #1e2130 !important;
+            border-color: #2a2d3a !important;
+        }
+
+        [data-theme="dark"] .tl-timemarker.tl-timemarker-active .tl-timemarker-content-container,
+        [data-theme="dark"] .tl-timemarker:hover .tl-timemarker-content-container {
+            background: #00c8ff !important;
+            border-color: #00c8ff !important;
+        }
+
+        [data-theme="dark"] .tl-timemarker .tl-timemarker-content {
+            color: #7a8099 !important;
+        }
+
+        [data-theme="dark"] .tl-timemarker.tl-timemarker-active .tl-timemarker-content,
+        [data-theme="dark"] .tl-timemarker:hover .tl-timemarker-content {
+            color: #fff !important;
+        }
+
+        [data-theme="dark"] .tl-timeaxis .tl-timeaxis-tick-text {
+            color: #3a4060 !important;
+        }
+
+        [data-theme="dark"] .tl-slide,
+        [data-theme="dark"] .tl-slide .tl-slide-content,
+        [data-theme="dark"] .tl-storyslider {
+            background: #13161f !important;
+        }
+
+        [data-theme="dark"] .tl-headline,
+        [data-theme="dark"] .tl-headline-date {
+            color: #e8eaf0 !important;
+        }
+
+        [data-theme="dark"] .tl-text p {
+            color: #7a8099 !important;
+        }
+
+        [data-theme="dark"] .tl-slidenav-next,
+        [data-theme="dark"] .tl-slidenav-previous {
+            color: #3a4060 !important;
+        }
+
+        [data-theme="dark"] .tl-slidenav-next:hover,
+        [data-theme="dark"] .tl-slidenav-previous:hover {
+            color: #00c8ff !important;
+        }
+
+        [data-theme="dark"] .tl-menubar {
+            background: #13161f !important;
+            border-color: #1e2130 !important;
+        }
+
+        [data-theme="dark"] .tl-menubar-button {
+            color: #3a4060 !important;
+        }
+
+        [data-theme="dark"] .tl-menubar-button:hover {
+            color: #00c8ff !important;
+        }
+
+        /* ── 主题按钮 ── */
+        .theme-btn {
+            padding: 6px 12px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            background: var(--bg-card);
+            color: var(--text-secondary);
+            font-size: 13px;
+            cursor: pointer;
+            outline: none;
+            transition: all 0.15s;
+            white-space: nowrap;
+        }
+
+        .theme-btn:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- 顶部标题栏 -->
+    <div class="top-bar">
+        <div style="display:flex;align-items:center;gap:8px;">
+            <span class="title">BiliBanner <span>Gallery</span></span>
+            <span class="hint">点击时间轴节点切换 Banner</span>
+        </div>
+        <button class="theme-btn" id="themeToggle"></button>
+    </div>
+
+    <!-- Banner 预览区 -->
+    <div id="bili-banner"></div>
+
+    <!-- 当前 Banner 信息条 -->
+    <div class="banner-info-bar">
+        <span class="label">当前</span>
+        <span class="name" id="currentName">—</span>
+        <span class="id-tag" id="currentId">—</span>
+    </div>
+
+    <!-- `TimelineJS3` 容器 -->
+    <div id="timeline-embed"></div>
+
+    <!-- 引入`BiliBanner`构建产物 -->
+    <script src="res/js/bilibanner.js"></script>
+
+    <script>
+        // ── 主题管理（在 fetch 之前就应用，避免闪烁） ───────────────────────────
+        var STORAGE_KEY = 'bili_theme'
+        var themeBtn = document.getElementById('themeToggle')
+
+        function applyTheme(theme) {
+            document.documentElement.setAttribute('data-theme', theme)
+            themeBtn.textContent = theme === 'dark' ? '☀️ 浅色' : '🌙 深色'
+        }
+
+        function getInitialTheme() {
+            var saved = localStorage.getItem(STORAGE_KEY)
+            if (saved) return saved
+            return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+        }
+
+        applyTheme(getInitialTheme())
+
+        themeBtn.addEventListener('click', function () {
+            var next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'
+            applyTheme(next)
+            localStorage.setItem(STORAGE_KEY, next)
+        })
+
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function (e) {
+            if (!localStorage.getItem(STORAGE_KEY)) applyTheme(e.matches ? 'dark' : 'light')
+        })
+
+        // ── bannerdata.json（时间轴信息） 路径配置 ────
+        var GALLERY_JSON_URL = 'res/bannerdata.json'
+
+        var nameEl = document.getElementById('currentName')
+        var idEl = document.getElementById('currentId')
+
+        // ── 解析 "YYYY-MM-DD" → TimelineJS3 日期对象 ────────────────────────────
+        function parseDate(str) {
+            if (!str) return null
+            var parts = str.split('-')
+            return { year: +parts[0], month: +parts[1], day: +(parts[2] || 1) }
+        }
+
+        // ── 构造 TimelineJS3 events，处理同月多版本的 day 冲突 ──────────────────
+        function buildTimelineData(banners) {
+            // 按 startDate 升序排列（null 排最前）
+            var sorted = banners.slice().sort(function (a, b) {
+                if (!a.startDate) return -1
+                if (!b.startDate) return 1
+                return a.startDate < b.startDate ? -1 : a.startDate > b.startDate ? 1 : 0
+            })
+
+            // 同年同月多项时 day 递增，避免 TimelineJS3 报重复日期
+            var dayCounter = {}
+            var events = sorted.map(function (b) {
+                var sd = parseDate(b.startDate) || { year: 2020, month: 1, day: 1 }
+                var key = sd.year + '-' + sd.month
+                dayCounter[key] = (dayCounter[key] || 0) + 1
+                sd.day = dayCounter[key]
+
+                var ed = parseDate(b.endDate)
+
+                // slide 文字：id + 描述 + 标签
+                var tagHtml = (b.tags || []).map(function (t) {
+                    return '<span style="display:inline-block;margin:2px 3px 0 0;padding:1px 6px;'
+                        + 'border-radius:3px;background:rgba(0,200,255,0.12);'
+                        + 'border:1px solid rgba(0,200,255,0.2);font-size:10px;opacity:0.7">' + t + '</span>'
+                }).join('')
+
+                var bodyHtml = '<code style="font-size:11px;opacity:0.5">' + b.id + '</code>'
+                if (b.description) bodyHtml += '<br><span style="font-size:12px">' + b.description + '</span>'
+                if (tagHtml) bodyHtml += '<br>' + tagHtml
+
+                var event = {
+                    unique_id: b.id,
+                    start_date: sd,
+                    text: {
+                        headline: b.title,
+                        text: bodyHtml,
+                    },
+                }
+                if (ed) event.end_date = ed
+
+                // cover 图片作为 media
+                if (b.cover) {
+                    event.media = { url: b.cover, thumbnail: b.cover }
+                }
+
+                return event
+            })
+
+            return {
+                title: {
+                    start_date: { year: 2020, month: 1, day: 1 },
+                    text: {
+                        headline: 'BiliBanner Gallery',
+                        text: 'Bilibili 历代动态 Banner 陈列馆<br>点击时间轴节点预览',
+                    },
+                },
+                events: events,
+            }
+        }
+
+        // ── 初始化时间轴与 Banner 联动 ───────────────────────────────────────────
+        function initGallery(banners) {
+            var timelineData = buildTimelineData(banners)
+
+            // id → banner 的快速查找表
+            var bannerMap = {}
+            banners.forEach(function (b) { bannerMap[b.id] = b })
+
+            var timeline = new TL.Timeline('timeline-embed', timelineData, {
+                timenav_height_percentage: 30,
+                marker_height_min: 40,
+                marker_width_min: 80,
+                start_at_slide: 1,
+                language: 'zh-cn',
+            })
+
+            function switchBanner(id) {
+                var b = bannerMap[id]
+                if (!b) return
+                nameEl.textContent = b.title
+                idEl.textContent = id
+                BiliBanner.init(id === 'latest' ? undefined : id)
+            }
+
+            timeline.on('change', function (data) {
+                if (data.unique_id) switchBanner(data.unique_id)
+            })
+
+            timeline.on('loaded', function () {
+                // 默认切到第一个 banner（跳过 title slide）
+                var first = timelineData.events[0]
+                if (first) switchBanner(first.unique_id)
+            })
+        }
+
+        // ── 加载 bannerdata.json ────────────────────────────────────────────────────
+        fetch(GALLERY_JSON_URL)
+            .then(function (res) {
+                if (!res.ok) throw new Error('bannerdata.json 加载失败：' + res.status)
+                return res.json()
+            })
+            .then(function (banners) {
+                initGallery(banners)
+            })
+            .catch(function (err) {
+                console.error('[Gallery]', err)
+                document.getElementById('timeline-embed').innerHTML =
+                    '<p style="padding:40px;color:#f66;text-align:center">'
+                    + '数据加载失败，请确认 ' + GALLERY_JSON_URL + ' 可访问<br>'
+                    + '<small>' + err.message + '</small></p>'
+            })
+    </script>
+</body>
+
+</html>

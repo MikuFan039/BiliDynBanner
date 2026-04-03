@@ -1,0 +1,437 @@
+[
+    {
+        "id": "2020autumn",
+        "title": "2020 秋",
+        "description": "哔哩哔哩首页于2020年秋季展示的分层景深版图",
+        "startDate": "2020-09-22",
+        "endDate": "2020-12-20",
+        "cover": "res/bilibanner/2020autumn/archive/0b7eef054547750e6bfeff6f36c83e83d2a058fb.png",
+        "tags": [
+            "2020",
+            "autumn",
+            "parallax"
+        ]
+    },
+    {
+        "id": "2020winter",
+        "title": "2020 冬",
+        "description": "哔哩哔哩首页于2020年冬季展示的版图，包含下雪效果，鼠标左右划即可看到中午-黄昏-晚上三个场景",
+        "startDate": "2020-12-21",
+        "endDate": "2021-03-19",
+        "cover": "res/bilibanner/2020winter/vc/f8cffcf7e5ee6bc4b0d5687d112d066b58e73cef.jpg",
+        "tags": [
+            "2020",
+            "winter",
+            "snow",
+            "parallax"
+        ]
+    },
+    {
+        "id": "2021spring",
+        "title": "2021 春",
+        "description": "哔哩哔哩首页于2021年春季展示的版图，包含樱花飘落效果（需WebGL2），个人最喜欢的一个版本",
+        "startDate": "2021-03-20",
+        "endDate": "2021-06-20",
+        "cover": "res/bilibanner/2021spring/vc/ab61ab76a225646e3bcb162b0f8fb2aa47f1f66c.png",
+        "tags": [
+            "2021",
+            "spring",
+            "petals",
+            "webgl2",
+            "parallax"
+        ]
+    },
+    {
+        "id": "2021summer",
+        "title": "2021 夏",
+        "description": "哔哩哔哩首页于2021年夏季展示的版图，共9版，根据系统时间（早、中、晚）随机展示晴天、刮风、下雨三个不同的场景<br>视频：https://www.bilibili.com/video/BV1DQ4y1R7EM/",
+        "startDate": "2021-06-21",
+        "endDate": "2021-09-22",
+        "cover": "res/bilibanner/2021summer/feed-admin/d7a4aeac90cbbefffc8ce5b9290b8c06bb05b900.png",
+        "tags": [
+            "2021",
+            "summer",
+            "time"
+        ]
+    },
+    {
+        "id": "2021autumn",
+        "title": "2021 秋",
+        "description": "哔哩哔哩首页于2021年秋季展示的版图，共三版，根据系统时间（早、中、晚）展<br>视频：https://www.bilibili.com/video/BV1qf4y177AB/",
+        "startDate": "2021-09-23",
+        "endDate": "2021-12-20",
+        "cover": "res/bilibanner/2021autumn/archive/b60151347754f0089489d7d68271233960a8d52f.png",
+        "tags": [
+            "2021",
+            "autumn",
+            "time",
+            "parallax"
+        ]
+    },
+    {
+        "id": "2021winter",
+        "title": "2021 冬",
+        "description": "哔哩哔哩首页于2021年冬季展示的版图，共三版，根据系统时间（早、中、晚）展示<br>视频：https://www.bilibili.com/video/BV1wr4y1X7Ri/",
+        "startDate": "2021-12-21",
+        "endDate": "2022-03-19",
+        "cover": "res/bilibanner/2021winter/archive/839190887e48acd3960a850723f0e82e877946f0.png",
+        "tags": [
+            "2021",
+            "winter",
+            "time"
+        ]
+    },
+    {
+        "id": "2022spring",
+        "title": "2022 春（常规）",
+        "description": "哔哩哔哩首页于2022年春季展示的版图，此版本为最初的版本，如果你的设备不满足游戏的最低要求也会显示这个版本",
+        "startDate": "2022-03-20",
+        "endDate": "2022-06-20",
+        "cover": "res/bilibanner/2022spring/archive/ba85138129ecbd9d8b59f7fc19f1d47bf0c8b5c8.png",
+        "tags": [
+            "2022",
+            "spring"
+        ]
+    },
+    {
+        "id": "2022springAdv",
+        "title": "2022 春（游戏）",
+        "description": "哔哩哔哩首页于2022年春季展示的「叶间穿行」互动游戏<br>附游戏链接：https://www.bilibili.com/blackboard/fe/activity-HQjQSdd3L8.html",
+        "startDate": "2022-03-20",
+        "endDate": "2022-06-20",
+        "cover": "res/bilibanner/2022spring/archive/ba85138129ecbd9d8b59f7fc19f1d47bf0c8b5c8.png",
+        "tags": [
+            "2022",
+            "spring",
+            "game",
+            "webgl2"
+        ]
+    },
+    {
+        "id": "2022summer",
+        "title": "2022 夏（常规）",
+        "description": "哔哩哔哩首页于2022年夏季展示的版图，如果你的设备不满足游戏的最低要求会显示这个版本",
+        "startDate": "2022-06-21",
+        "endDate": "2022-09-22",
+        "cover": "res/bilibanner/2022summer/archive/956de2627e2cc1a9da53ea1d8762cea33e8ea6e5.png",
+        "tags": [
+            "2022",
+            "summer",
+            "static"
+        ]
+    },
+    {
+        "id": "2022summerAdv",
+        "title": "2022 夏（互动）",
+        "description": "哔哩哔哩首页于2022年夏季展示的雨声环境音版头<br>视频：https://www.bilibili.com/video/BV1dv4y1g7ji/",
+        "startDate": "2022-06-21",
+        "endDate": "2022-09-22",
+        "cover": "res/bilibanner/2022summer/archive/956de2627e2cc1a9da53ea1d8762cea33e8ea6e5.png",
+        "tags": [
+            "2022",
+            "summer",
+            "game",
+            "webgl2"
+        ]
+    },
+    {
+        "id": "2022autumn",
+        "title": "2022 秋（常规）",
+        "description": "哔哩哔哩首页于2022年秋季展示的版图，如果你的设备不满足游戏的最低要求会显示这个版本",
+        "startDate": "2022-09-23",
+        "endDate": "2022-12-21",
+        "cover": "res/bilibanner/2022autumn/archive/a10dc06f92ff2cf438244d0ed13dba27be88d73f.png",
+        "tags": [
+            "2022",
+            "autumn",
+            "static"
+        ]
+    },
+    {
+        "id": "2022autumnAdv",
+        "title": "2022 秋（互动）",
+        "description": "哔哩哔哩首页于2022年秋季展示的户外环境音版<br>视频：https://www.bilibili.com/video/BV1Ne4y1H73m/",
+        "startDate": "2022-09-23",
+        "endDate": "2022-12-21",
+        "cover": "res/bilibanner/2022autumn/archive/a10dc06f92ff2cf438244d0ed13dba27be88d73f.png",
+        "tags": [
+            "2022",
+            "autumn",
+            "game",
+            "webgl2"
+        ]
+    },
+    {
+        "id": "2022winter",
+        "title": "2022 冬",
+        "description": "哔哩哔哩首页于2022年冬季展示的版图，这个其实是静态的，但这里为了穿起时间线保留了下来...<br>其实开始我一直以为这个是动态的，只是我的浏览器问题不显示，F12了一下才发现是静态的<br>原先的Banner开发者可能已经不在哔哩哔哩工作了吧QAQ...",
+        "startDate": "2022-12-22",
+        "endDate": "2022-03-19",
+        "cover": "res/bilibanner/2022winter/archive/f97330ca7905307f539b2af1f64fa2a2fdb4eaed.png",
+        "tags": [
+            "2022",
+            "autumn",
+            "static"
+        ]
+    },
+    {
+        "id": "2023spring",
+        "title": "2023 春（第一版）",
+        "description": "哔哩哔哩首页于2023年春季展示的版图，第一版",
+        "startDate": "2023-03-20",
+        "endDate": "2023-03-30",
+        "cover": "res/bilibanner/2023spring/archive/5d624c842e091447cf9b679d4cc6ae70d731ea06.png",
+        "tags": [
+            "2023",
+            "spring",
+            "parallax"
+        ]
+    },
+    {
+        "id": "2023springV2",
+        "title": "2023 春（第二版）",
+        "description": "哔哩哔哩首页于2023年春季展示的版图，第二版",
+        "startDate": "2023-03-31",
+        "endDate": "2023-05-07",
+        "cover": "res/bilibanner/2023springV2/archive/c3c807eb2f5bcc333a3bf3189634e3f9867c6a85.png",
+        "tags": [
+            "2023",
+            "spring",
+            "parallax"
+        ]
+    },
+    {
+        "id": "2023summer",
+        "title": "2023 夏（第一版）",
+        "description": "哔哩哔哩首页于2023年夏季展示的版图，第一版",
+        "startDate": "2023-05-08",
+        "endDate": "2023-06-11",
+        "cover": "res/bilibanner/2023summer/archive/1b5dcf49b2f29812842c1a60f054148eef714626.png",
+        "tags": [
+            "2023",
+            "summer",
+            "parallax"
+        ]
+    },
+    {
+        "id": "2023summerV2",
+        "title": "2023 夏（第二版）",
+        "description": "哔哩哔哩首页于2023年夏季展示的版图，第二版",
+        "startDate": "2023-06-12",
+        "endDate": "2023-07-17",
+        "cover": "res/bilibanner/2023summerV2/archive/2e81e0644044fafd5e72de3e595d7db6f65122ef.png",
+        "tags": [
+            "2023",
+            "summer",
+            "parallax"
+        ]
+    },
+    {
+        "id": "2023summerV3",
+        "title": "2023 夏（第三版）",
+        "description": "哔哩哔哩首页于2023年夏季展示的版图，第三版",
+        "startDate": "2023-07-18",
+        "endDate": "2023-08-12",
+        "cover": "res/bilibanner/2023summerV3/archive/fba0c9bac0fad743e9befa9305f197a919561580.png",
+        "tags": [
+            "2023",
+            "summer",
+            "parallax"
+        ]
+    },
+    {
+        "id": "2023summerV4",
+        "title": "2023 夏（第四版）",
+        "description": "哔哩哔哩首页于2023年夏季展示的版图，第四版",
+        "startDate": "2023-08-13",
+        "endDate": "2023-08-20",
+        "cover": "res/bilibanner/2023summerV4/archive/d191f212b0cc80cc78828abf469eac96483dad7f.png",
+        "tags": [
+            "2023",
+            "summer",
+            "parallax"
+        ]
+    },
+    {
+        "id": "2023summerV5",
+        "title": "2023 夏（第五版）",
+        "description": "哔哩哔哩首页于2023年夏季展示的版图，第五版",
+        "startDate": "2023-08-21",
+        "endDate": "2023-09-31",
+        "cover": "res/bilibanner/2023summerV5/archive/34319439f88f5c0794ee6985cd535fcb40ed28e0.png",
+        "tags": [
+            "2023",
+            "summer",
+            "parallax"
+        ]
+    },
+    {
+        "id": "2023autumn",
+        "title": "2023 秋（第一版）",
+        "description": "哔哩哔哩首页于2023年秋季展示的版图，第一版",
+        "startDate": "2023-10-01",
+        "endDate": "2023-10-25",
+        "cover": "res/bilibanner/2023autumn/archive/5b611886348bdcd697d3eb220ec7dacd462c8429.png",
+        "tags": [
+            "2023",
+            "autumn",
+            "parallax"
+        ]
+    },
+    {
+        "id": "2023autumnV2",
+        "title": "2023 秋（第二版）",
+        "description": "哔哩哔哩首页于2023年秋季展示的版图，第二版",
+        "startDate": "2023-10-26",
+        "endDate": "2023-11-16",
+        "cover": "res/bilibanner/2023autumnV2/archive/dd34d0502c17d039a976fb6dedae2dd7d5666c51.png",
+        "tags": [
+            "2023",
+            "autumn",
+            "parallax"
+        ]
+    },
+    {
+        "id": "2023autumnV3",
+        "title": "2023 秋（第三版）",
+        "description": "哔哩哔哩首页于2023年秋季展示的版图，第三版",
+        "startDate": "2023-11-17",
+        "endDate": "2023-12-11",
+        "cover": "res/bilibanner/2023autumnV3/archive/13af03a8b70c0098f0d85ac6cf3e235951c4f4c0.png",
+        "tags": [
+            "2023",
+            "autumn",
+            "parallax"
+        ]
+    },
+    {
+        "id": "2023winter",
+        "title": "2023 冬（第一版）",
+        "description": "哔哩哔哩首页于2023年冬季展示的版图，第一版",
+        "startDate": "2023-12-12",
+        "endDate": "2024-01-31",
+        "cover": "res/bilibanner/2023winter/archive/721ecf6ed5ef7cf406e801216513f7f318353704.png",
+        "tags": [
+            "2023",
+            "winter",
+            "parallax"
+        ]
+    },
+    {
+        "id": "2023winterV2",
+        "title": "2023 冬（第二版）",
+        "description": "哔哩哔哩首页于2023年冬季展示的版图，第二版",
+        "startDate": "2024-02-01",
+        "endDate": "2024-04-01",
+        "cover": "res/bilibanner/2023winterV2/archive/1b6b30a3180bf58fd69b6df2f3c96108ed7fef1f.png",
+        "tags": [
+            "2023",
+            "winter",
+            "parallax"
+        ]
+    },
+    {
+        "id": "2024spring",
+        "title": "2024 春",
+        "description": "哔哩哔哩首页于2024年春季展示的版图，这个其实是第二版，但由于第一版使用的是2021春的版本这里就作为第一版了",
+        "startDate": "2024-05-06",
+        "endDate": "2024-06-20",
+        "cover": "res/bilibanner/2024spring/archive/a947affc321e82798ade231ef5551b7298d90e4b.png",
+        "tags": [
+            "2024",
+            "spring",
+            "parallax"
+        ]
+    },
+    {
+        "id": "2024summer",
+        "title": "2024 夏",
+        "description": "哔哩哔哩首页于2024年夏季展示的版图",
+        "startDate": "2024-06-21",
+        "endDate": "2024-09-25",
+        "cover": "res/bilibanner/2024summer/archive/e5b7fca0c001cbe0b77a2956e4c861d9f19c4575.png",
+        "tags": [
+            "2024",
+            "summer",
+            "parallax"
+        ]
+    },
+    {
+        "id": "2024autumn",
+        "title": "2024 秋",
+        "description": "哔哩哔哩首页于2024年秋季展示的版图",
+        "startDate": "2024-09-26",
+        "endDate": "2024-12-24",
+        "cover": "res/bilibanner/2024autumn/archive/ea2a1ec9381189610ca78549ec3362951211bd94.png",
+        "tags": [
+            "2024",
+            "autumn",
+            "parallax"
+        ]
+    },
+    {
+        "id": "2024winter",
+        "title": "2024 冬",
+        "description": "哔哩哔哩首页于2024年冬季展示的版图",
+        "startDate": "2024-12-25",
+        "endDate": "2025-03-30",
+        "cover": "res/bilibanner/2024winter/archive/7ce92c4363969402d3869c6160706de8b59e025e.png",
+        "tags": [
+            "2024",
+            "winter",
+            "parallax"
+        ]
+    },
+    {
+        "id": "2025spring",
+        "title": "2025 春",
+        "description": "哔哩哔哩首页于2025年春季展示的版图",
+        "startDate": "2025-03-31",
+        "endDate": "2025-06-15",
+        "cover": "res/bilibanner/2025spring/archive/9e2d4862c9a4e137514c0fac8794405ff9d61a0f.png",
+        "tags": [
+            "2025",
+            "spring",
+            "parallax"
+        ]
+    },
+    {
+        "id": "2025summer",
+        "title": "2025 夏",
+        "description": "哔哩哔哩首页于2025年夏季展示的版图",
+        "startDate": "2025-06-16",
+        "endDate": "2025-09-09",
+        "cover": "res/bilibanner/2025summer/archive/fbcca754eadc47994aaaa0964a7ddf366cd8033a.png",
+        "tags": [
+            "2025",
+            "summer",
+            "parallax"
+        ]
+    },
+    {
+        "id": "2025autumn",
+        "title": "2025 秋",
+        "description": "哔哩哔哩首页于2025年秋季展示的版图",
+        "startDate": "2025-09-10",
+        "endDate": "2026-01-08",
+        "cover": "res/bilibanner/2025autumn/archive/12573bbe82fe6e24e49c199186936b5b15d6572d.png",
+        "tags": [
+            "2025",
+            "autumn",
+            "parallax"
+        ]
+    },
+    {
+        "id": "2025winter",
+        "title": "2025 冬",
+        "description": "哔哩哔哩首页于2025年冬季展示的版图（实际上于2026年发布，但确实属于25年冬季）",
+        "startDate": "2026-01-09",
+        "endDate": null,
+        "cover": "res/bilibanner/2025winter/archive/a8dcb9d05c22e7e5cfb1bbd0d97092f4edd357ef.png",
+        "tags": [
+            "2025",
+            "winter",
+            "parallax"
+        ]
+    }
+]

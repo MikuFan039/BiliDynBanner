@@ -1,6 +1,8 @@
 ## `animated-banner` 动态 Banner 组件
 
-**此处是动态 Banner 的核心组件，完全保持官方实现**
+**此处是动态 Banner 的核心组件，保持官方实现**
+
+对`2020autumn`动态 Banner 做了兼容处理，修复了不播放眨眼动画的 Bug
 
 ---
 

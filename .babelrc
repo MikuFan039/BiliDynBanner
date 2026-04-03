@@ -3,9 +3,19 @@
     [
       "@babel/preset-env",
       {
-        "targets": "defaults",
-        "useBuiltIns": "usage",
-        "corejs": 3
+        "targets": {
+          // ES2015 兼容性：`https://caniuse.com/es6`
+          "chrome": "51",
+          "edge": "15",
+          "safari": "10",
+          "firefox": "54",
+          "opera": 38,
+          "android": "51",
+          "ios": "10"
+        },
+        // ES2015 目标浏览器原生支持 Promise / Map / Symbol 等，
+        // async/await（ES2017）由 babel 转为 Promise 链，无需额外 polyfill 注入
+        "useBuiltIns": false
       }
     ]
   ]
