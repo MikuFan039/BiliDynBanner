@@ -1,0 +1,16 @@
+[
+    {
+        "_comment": "这个文件用于描述`其他杂七杂八和无法分类内容`的信息"
+    },
+    {
+        "id": "",
+        "title": "",
+        "description": "",
+        "startDate": "1970-01-01",
+        "endDate": "1970-01-01",
+        "cover": null,
+        "category": "special",
+        "group": "",
+        "tags": []
+    }
+]

@@ -175,6 +175,7 @@ export default {
             console.error(`[BiliBanner] 未找到高级扩展: ${advExt.extension}`);
             return;
           }
+          if (!this.$refs.banner) return;
           ext.init(
             this.$refs.banner,
             this.$refs.taperLine,
@@ -204,6 +205,9 @@ export default {
               ext.config,
               config.extensions[advExtKey]
             );
+            // await bannerDataFetched 期间组件可能已被销毁（快速切换 banner 时），
+            // $refs.banner 为 undefined，需在调用前检查
+            if (!this.$refs.banner) return;
             ext.init(
               this.$refs.banner,
               this.$refs.taperLine,

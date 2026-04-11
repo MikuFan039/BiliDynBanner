@@ -134,7 +134,7 @@ async function main() {
     }
 
     const rootDir = path.join(__dirname, ".."); // 项目根目录
-    const baseDir = path.join(rootDir, "res", folderName); // 最终保存位置
+    const baseDir = path.join(rootDir, "public", folderName); // 最终保存位置
     console.log(`保存目录: ${baseDir}`);
 
     // 创建主目录
@@ -219,7 +219,7 @@ async function main() {
     console.log(`已保存 manifest 到 ${manifestPath}`);
 
     // 8. 同步到 latest 目录
-    const latestDir = path.join(rootDir, "res", "latest");
+    const latestDir = path.join(rootDir, "public", "latest");
     console.log(`准备同步到 latest 目录: ${latestDir}`);
 
     // 删除 latest 目录下所有内容（保留目录本身）

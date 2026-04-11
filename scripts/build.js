@@ -41,9 +41,9 @@ async function run() {
       filter: excludeMd,
     });
 
-    // 复制 `res/*` 到 `dist/res/bilibanner/*`（排除 .md）
+    // 复制 `public/*` 到 `dist/res/bilibanner/*`（排除 .md）
     console.log("复制Banner元数据中...");
-    const resSrc = path.join(rootDir, "res");
+    const resSrc = path.join(rootDir, "public");
     const resDest = path.join(rootDir, "dist", "res", "bilibanner");
     await fs.mkdir(resDest, { recursive: true });
     await fs.cp(resSrc, resDest, { recursive: true, filter: excludeMd });

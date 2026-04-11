@@ -1,0 +1,53 @@
+[
+    {
+        "_comment": "这个文件用于描述`2022年发布的游戏和高级互动 Banner`的信息"
+    },
+    {
+        "id": "2022springAdv",
+        "title": "2022 春（游戏）",
+        "description": "哔哩哔哩首页于2022年春季展示的「叶间穿行」互动游戏<br>附游戏链接：https://www.bilibili.com/blackboard/fe/activity-HQjQSdd3L8.html",
+        "startDate": "2022-03-20",
+        "endDate": "2022-06-20",
+        "cover": "res/bilibanner/2022spring/bfs/archive/ba85138129ecbd9d8b59f7fc19f1d47bf0c8b5c8.png",
+        "category": "game",
+        "group": "spring",
+        "tags": [
+            "2022",
+            "spring",
+            "game",
+            "webgl2"
+        ]
+    },
+    {
+        "id": "2022summerAdv",
+        "title": "2022 夏（互动）",
+        "description": "哔哩哔哩首页于2022年夏季展示的雨声环境音版头<br>视频：https://www.bilibili.com/video/BV1dv4y1g7ji/",
+        "startDate": "2022-06-21",
+        "endDate": "2022-09-22",
+        "cover": "res/bilibanner/2022summer/bfs/archive/956de2627e2cc1a9da53ea1d8762cea33e8ea6e5.png",
+        "category": "game",
+        "group": "summer",
+        "tags": [
+            "2022",
+            "summer",
+            "game",
+            "webgl2"
+        ]
+    },
+    {
+        "id": "2022autumnAdv",
+        "title": "2022 秋（互动）",
+        "description": "哔哩哔哩首页于2022年秋季展示的户外环境音版<br>视频：https://www.bilibili.com/video/BV1Ne4y1H73m/",
+        "startDate": "2022-09-23",
+        "endDate": "2022-12-21",
+        "cover": "res/bilibanner/2022autumn/bfs/archive/a10dc06f92ff2cf438244d0ed13dba27be88d73f.png",
+        "category": "game",
+        "group": "autumn",
+        "tags": [
+            "2022",
+            "autumn",
+            "game",
+            "webgl2"
+        ]
+    }
+]

@@ -1,0 +1,17 @@
+[
+    {
+        "_comment": "这个文件用于描述`历年高考及各种国内外大事件 Banner`的信息"
+    },
+    {
+        "id": "",
+        "title": "",
+        "description": "",
+        "startDate": "1970-01-01",
+        "endDate": "1970-01-01",
+        "cover": null,
+        "category": "event",
+        "group": "",
+        "event": "",
+        "tags": []
+    }
+]

@@ -1,0 +1,63 @@
+{
+    "_comment": "这个文件是所有分类的索引文件",
+    "_version": "2",
+    "categories": [
+        {
+            "id": "seasonal",
+            "label": "季节",
+            "description": "四季轮换的常规视差动效 Banner",
+            "file": "gallery/seasonal.json",
+            "color": "#67C23A"
+        },
+        {
+            "id": "festival",
+            "label": "节日",
+            "description": "春节、国庆、中秋等节日主题 Banner",
+            "file": "gallery/festival.json",
+            "color": "#F56C6C"
+        },
+        {
+            "id": "activity",
+            "label": "活动",
+            "description": "周年庆及各种官方举办的活动 Banner",
+            "file": "gallery/activity.json",
+            "color": "#E6A23C"
+        },
+        {
+            "id": "event",
+            "label": "事件",
+            "description": "历年高考及各种国内外大事件 Banner",
+            "file": "gallery/event.json",
+            "color": "#5CADFF"
+        },
+        {
+            "id": "game",
+            "label": "游戏",
+            "description": "2022年发布的游戏和高级互动 Banner",
+            "file": "gallery/game.json",
+            "color": "#9B6BFF"
+        },
+        {
+            "id": "other",
+            "label": "其他",
+            "description": "其他杂七杂八和无法分类的内容...",
+            "file": "gallery/other.json",
+            "color": "#C0C4CC"
+        }
+    ],
+    "pinned": [
+        {
+            "id": "latest",
+            "title": "最新",
+            "description": "最新发布的 Banner",
+            "startDate": null,
+            "endDate": null,
+            "cover": null,
+            "category": null,
+            "group": null,
+            "tags": [
+                "latest"
+            ]
+        }
+    ]
+}

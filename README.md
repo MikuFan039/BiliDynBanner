@@ -1,10 +1,20 @@
 ## BiliBanner 模块
 
+**最近太累了喵，身体不舒服喵，暂停更新一段时间喵...**
+
+**过段时间会回来更新的喵...**
+
+**争取补全从 2010 年到现在的所有历史数据喵...**
+
+---
+
 Bilibili 动态视差、游戏 Banner 独立组件，基于 Vue2 + Webpack 构建
 
-支持哔哩哔哩`2020秋~现在`的全部动态 Banner，包括 2022 年的游戏 Banner
+支持哔哩哔哩`2020秋~现在`的全部动态 Banner，包括 2022 年的游戏 Banner ~~（当然以前的静态 Banner 也是支持的，只需要正确配置...）~~
 
-![预览图](./docs/preview.png "差不多是这样的...")
+![预览图](./docs/preview.png "差不多是这样的吧...")
+
+也可前往[此处](https://mikufan039.github.io/bilibanner.html)强势围观施（xia）工（ji）现（ba）场（gao）
 
 ---
 
@@ -107,11 +117,11 @@ dist/
 
 ### 对浏览器的要求：
 
-1. 不支持`Safari`浏览器
-2. 需支持`WebGL2`
-3. 需支持`Shadow DOM`
-4. CSS 需支持`image-rendering: pixelated`
-5. 需支持部分[`ES2020`语法](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Optional_chaining)
+1. 不支持[`Safari`浏览器](src/components/animated-banner/index.vue#L33 "官方：因性能问题禁用")
+2. 需支持[`WebGL2`](https://developer.mozilla.org/zh-CN/docs/Web/API/WebGL_API#webgl_2)
+3. 需支持[`Shadow DOM`]("https://developer.mozilla.org/zh-CN/docs/Web/API/Web_components/Using_shadow_DOM" "影子 DOM")
+4. CSS 需支持[`image-rendering: pixelated`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Reference/Properties/image-rendering#pixelated)
+5. 需支持部分[`ES2020`语法]("https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Optional_chaining" "可选链运算符")
 
 ### 快速检测：
 
@@ -150,4 +160,34 @@ npm run garb -- --name <banner_name>
 
 2. 下载历史 Banner
 
-目前本项目已自带元数据和相关资源文件，无需单独下载
+可通过[Wayback Machine](http://web.archive.org/)查找页面快照获取
+
+Banner JSON 结构如下，对于以前的静态 Banner 只需要保证有`pic`字段即可
+
+```json
+{
+  "code": 0,
+  "message": "0",
+  "ttl": 1,
+  "data": {
+    "name": "",
+    "pic": "",
+    "litpic": "",
+    "url": "",
+    "is_split_layer": 0,
+    "split_layer": "",
+    "request_id": ""
+  }
+}
+```
+
+各字段说明（某些字段可能不展示，但不建议省略字段以及相关资源）
+
+| 字段           | 类型    | 说明                                                                               | 必须 |
+| -------------- | ------- | ---------------------------------------------------------------------------------- | ---- |
+| name           | string  | Banner 名称                                                                        | N    |
+| pic            | string  | Banner 主图                                                                        | Y    |
+| litpic         | string  | 左侧"bilibili"Logo<br>（默认不展示，但不建议省略该字段及相关资源）                 | Y    |
+| url            | string  | 活动链接                                                                           | N    |
+| is_split_layer | boolean | 是否为视差 Banner<br>`0`：否 `1`：是                                               | Y    |
+| split_layer    | text    | Banner 分层数据<br>为转义后的 JSON 对象，仅当`is_split_layer`为`1`时该字段存在内容 | Y    |

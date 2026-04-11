@@ -1,7 +1,7 @@
 import Vue from "vue";
 import Banner from "./components/Banner.vue";
 
-// 资源根路径，修改此处后重新构建即可
+// 资源根路径，修改此处后重新构建即可（HTTPS页面需修改为`https://`）
 const BASE_URL = "http://localhost:8080/res/bilibanner";
 // error 的完整 URL，作为所有情况的最终 fallback
 const ERROR_URL = `${BASE_URL}/error/manifest.json`;

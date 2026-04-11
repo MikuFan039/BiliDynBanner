@@ -5,6 +5,8 @@
     <meta http-equiv="Content-Type" content="text/html" charset="utf-8">
     <link rel="shortcut icon" href="favicon.ico">
     <title>全部动态Banner陈列馆</title>
+    <meta name="description" content="哔哩哔哩首页历代几十个版本的动态Banner（头图）的收集和展示" />
+    <meta name="keywords" content="哔哩哔哩,bilibili,头图,banner" />
 
     <!-- 从 CDN 引入`TimelineJS3` -->
     <link rel="stylesheet" href="https://cdn.knightlab.com/libs/timeline3/latest/css/timeline.css">
@@ -113,20 +115,35 @@
             color: var(--accent);
         }
 
+        .banner-info-bar .cat-tag {
+            display: inline-block;
+            padding: 2px 10px;
+            border-radius: 2px;
+            font-size: 12px;
+            font-weight: 600;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        .banner-info-bar .cat-tag:empty {
+            display: none;
+        }
+
         .banner-info-bar .id-tag {
             font-size: 12px;
             color: var(--text-secondary);
-            font-family: "Courier New", monospace;
+            font-family: "Courier New",
+                monospace;
             background: var(--accent-dim);
             padding: 2px 8px;
-            border-radius: 4px;
+            border-radius: 2px;
             border: 1px solid rgba(0, 200, 255, 0.15);
         }
 
         /* ── TimelineJS3 容器 ── */
         #timeline-embed {
             flex: 1;
-            min-height: 400px;
+            min-height: 420px;
         }
 
         /* ── TimelineJS3 深色主题覆盖 ── */
@@ -198,23 +215,150 @@
             color: #00c8ff !important;
         }
 
-        /* ── 主题按钮 ── */
-        .theme-btn {
-            padding: 6px 12px;
-            border: 1px solid var(--border);
-            border-radius: 6px;
-            background: var(--bg-card);
+        /* ── 分类筛选栏 ── */
+        .filter-bar {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 28px;
+            background: var(--bg-panel);
+            border-bottom: 1px solid var(--border);
+            transition: background 0.25s, border-color 0.25s;
+            flex-wrap: wrap;
+        }
+
+        .filter-bar .filter-label {
+            font-size: 11px;
             color: var(--text-secondary);
-            font-size: 13px;
-            cursor: pointer;
-            outline: none;
-            transition: all 0.15s;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-right: 4px;
             white-space: nowrap;
         }
 
-        .theme-btn:hover {
+        .cat-btn {
+            padding: 4px 14px;
+            border: none;
+            border-radius: 2px;
+            font-size: 13px;
+            font-family: inherit;
+            cursor: pointer;
+            outline: none;
+            transition: background 0.15s, opacity 0.15s;
+            color: #fff;
+            white-space: nowrap;
+            opacity: 0.75;
+        }
+
+        .cat-btn:hover {
+            opacity: 1;
+        }
+
+        .cat-btn.active {
+            opacity: 1;
+            box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.25);
+        }
+
+        /* ── 主题模块 ── */
+        .top-actions {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        /* 分割线 */
+        .divider {
+            width: 1px;
+            height: 22px;
+            background: var(--border);
+        }
+
+        /* GitHub图标 */
+        .github-link {
+            width: 22px;
+            height: 22px;
+            display: inline-block;
+            background-color: currentColor;
+            color: var(--text-secondary);
+            -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 .297c-6.63 0-12 5.373-12 12c0 5.303 3.438 9.8 8.205 11.385c.6.113.82-.258.82-.577c0-.285-.01-1.04-.015-2.04c-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729c1.205.084 1.838 1.236 1.838 1.236c1.07 1.835 2.809 1.305 3.495.998c.108-.776.417-1.305.76-1.605c-2.665-.3-5.466-1.332-5.466-5.93c0-1.31.465-2.38 1.235-3.22c-.135-.303-.54-1.523.105-3.176c0 0 1.005-.322 3.3 1.23c.96-.267 1.98-.399 3-.405c1.02.006 2.04.138 3 .405c2.28-1.552 3.285-1.23 3.285-1.23c.645 1.653.24 2.873.12 3.176c.765.84 1.23 1.91 1.23 3.22c0 4.61-2.805 5.625-5.475 5.92c.42.36.81 1.096.81 2.22c0 1.606-.015 2.896-.015 3.286c0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12'/%3E%3C/svg%3E") no-repeat center / contain;
+            mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 .297c-6.63 0-12 5.373-12 12c0 5.303 3.438 9.8 8.205 11.385c.6.113.82-.258.82-.577c0-.285-.01-1.04-.015-2.04c-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729c1.205.084 1.838 1.236 1.838 1.236c1.07 1.835 2.809 1.305 3.495.998c.108-.776.417-1.305.76-1.605c-2.665-.3-5.466-1.332-5.466-5.93c0-1.31.465-2.38 1.235-3.22c-.135-.303-.54-1.523.105-3.176c0 0 1.005-.322 3.3 1.23c.96-.267 1.98-.399 3-.405c1.02.006 2.04.138 3 .405c2.28-1.552 3.285-1.23 3.285-1.23c.645 1.653.24 2.873.12 3.176c.765.84 1.23 1.91 1.23 3.22c0 4.61-2.805 5.625-5.475 5.92c.42.36.81 1.096.81 2.22c0 1.606-.015 2.896-.015 3.286c0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12'/%3E%3C/svg%3E") no-repeat center / contain;
+            transition: color 0.2s;
+        }
+
+        .github-link:hover {
+            color: var(--text-primary);
+        }
+
+        /* 深/浅色模式切换开关 */
+        .VPSwitch {
+            position: relative;
+            width: 48px;
+            height: 24px;
+            border-radius: 999px;
+            border: 1px solid var(--border);
+            background: var(--bg-card);
+            cursor: pointer;
+            transition: all 0.25s;
+        }
+
+        .VPSwitch:hover {
             border-color: var(--accent);
-            color: var(--accent);
+        }
+
+        .VPSwitch .check {
+            position: absolute;
+            top: 1px;
+            left: 1px;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .VPSwitch .icon {
+            position: relative;
+            width: 14px;
+            height: 14px;
+        }
+
+        .vpi-sun,
+        .vpi-moon {
+            position: absolute;
+            inset: 0;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            transition: opacity 0.25s;
+        }
+
+        .vpi-sun {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg fill='none' stroke='black' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'%3E%3Ccircle cx='12' cy='12' r='4'/%3E%3Cpath d='M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41'/%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .vpi-moon {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='none' stroke='black' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M12 3a6 6 0 0 0 9 9a9 9 0 1 1-9-9'/%3E%3C/svg%3E");
+        }
+
+        /* 亮色模式（默认） */
+        .vpi-moon {
+            opacity: 0;
+        }
+
+        /* 暗色模式 */
+        [data-theme="dark"] .VPSwitch .check {
+            transform: translateX(24px);
+        }
+
+        [data-theme="dark"] .vpi-sun {
+            opacity: 0;
+        }
+
+        [data-theme="dark"] .vpi-moon {
+            opacity: 1;
         }
     </style>
 </head>
@@ -227,15 +371,51 @@
             <span class="title">BiliBanner <span>Gallery</span></span>
             <span class="hint">点击时间轴节点切换 Banner</span>
         </div>
-        <button class="theme-btn" id="themeToggle"></button>
+        <div class="top-actions">
+            <!-- 深色模式切换开关（VitePress样式） -->
+            <button class="VPSwitch VPSwitchAppearance" id="themeToggle">
+                <span class="check">
+                    <span class="icon">
+                        <span class="vpi-sun sun"></span>
+                        <span class="vpi-moon moon"></span>
+                    </span>
+                </span>
+            </button>
+            <!-- 分割线 -->
+            <div class="divider"></div>
+            <!-- GitHub图标 -->
+            <a class="github-link" href="https://github.com/MikuFan039/BiliDynBanner" target="_blank"></a>
+        </div>
     </div>
 
     <!-- Banner 预览区 -->
     <div id="bili-banner"></div>
 
+    <!-- 分类筛选栏 -->
+    <div class="filter-bar">
+        <span class="filter-label">分类</span>
+        <button class="cat-btn active" data-filter="latest"
+            style="--c:#409EFF;--h:#66B1FF;--a:#337ECC;background:#409EFF">最新</button>
+        <button class="cat-btn" data-filter="all"
+            style="--c:#909399;--h:#A6A9AD;--a:#73767A;background:#909399">所有</button>
+        <button class="cat-btn" data-filter="seasonal"
+            style="--c:#67C23A;--h:#85CE61;--a:#529B2E;background:#67C23A">季节</button>
+        <button class="cat-btn" data-filter="festival"
+            style="--c:#F56C6C;--h:#F78989;--a:#C45656;background:#F56C6C">节日</button>
+        <button class="cat-btn" data-filter="activity"
+            style="--c:#E6A23C;--h:#EBB563;--a:#B88230;background:#E6A23C">活动</button>
+        <button class="cat-btn" data-filter="event"
+            style="--c:#5CADFF;--h:#7EC2FF;--a:#3A8EE6;background:#5CADFF">事件</button>
+        <button class="cat-btn" data-filter="game"
+            style="--c:#9B6BFF;--h:#B28DFF;--a:#7E55CC;background:#9B6BFF">游戏</button>
+        <button class="cat-btn" data-filter="other"
+            style="--c:#C0C4CC;--h:#D3D6DC;--a:#9FA3AB;background:#C0C4CC">其他</button>
+    </div>
+
     <!-- 当前 Banner 信息条 -->
     <div class="banner-info-bar">
         <span class="label">当前</span>
+        <span class="cat-tag" id="currentCat"></span>
         <span class="name" id="currentName">—</span>
         <span class="id-tag" id="currentId">—</span>
     </div>
@@ -253,7 +433,8 @@
 
         function applyTheme(theme) {
             document.documentElement.setAttribute('data-theme', theme)
-            themeBtn.textContent = theme === 'dark' ? '☀️ 浅色' : '🌙 深色'
+            var isDark = theme === 'dark'
+            themeBtn.setAttribute('aria-checked', isDark)
         }
 
         function getInitialTheme() {
@@ -274,8 +455,8 @@
             if (!localStorage.getItem(STORAGE_KEY)) applyTheme(e.matches ? 'dark' : 'light')
         })
 
-        // ── bannerdata.json（时间轴信息） 路径配置 ────
-        var GALLERY_JSON_URL = 'res/bannerdata.json'
+        // ── 数据加载路径 ─────────────────────────────────────────────────────────
+        var GALLERY_INDEX_URL = 'res/bilibanner/gallery.json'
 
         var nameEl = document.getElementById('currentName')
         var idEl = document.getElementById('currentId')
@@ -288,15 +469,13 @@
         }
 
         // ── 构造 TimelineJS3 events，处理同月多版本的 day 冲突 ──────────────────
-        function buildTimelineData(banners) {
-            // 按 startDate 升序排列（null 排最前）
+        function buildTimelineData(banners, categoryMap) {
             var sorted = banners.slice().sort(function (a, b) {
                 if (!a.startDate) return -1
                 if (!b.startDate) return 1
                 return a.startDate < b.startDate ? -1 : a.startDate > b.startDate ? 1 : 0
             })
 
-            // 同年同月多项时 day 递增，避免 TimelineJS3 报重复日期
             var dayCounter = {}
             var events = sorted.map(function (b) {
                 var sd = parseDate(b.startDate) || { year: 2020, month: 1, day: 1 }
@@ -306,31 +485,26 @@
 
                 var ed = parseDate(b.endDate)
 
-                // slide 文字：id + 描述 + 标签
-                var tagHtml = (b.tags || []).map(function (t) {
-                    return '<span style="display:inline-block;margin:2px 3px 0 0;padding:1px 6px;'
-                        + 'border-radius:3px;background:rgba(0,200,255,0.12);'
-                        + 'border:1px solid rgba(0,200,255,0.2);font-size:10px;opacity:0.7">' + t + '</span>'
-                }).join('')
+                // Banner 说明和标签
+                var tagHtml = (b.tags || [])
+                    .filter(function (t) { return t !== b.category })
+                    .map(function (t) {
+                        return '<span style="display:inline-block;margin:2px 3px 0 0;padding:1px 6px;'
+                            + 'border-radius:2px;background:rgba(255,255,255,0.06);'
+                            + 'border:1px solid rgba(255,255,255,0.1);font-size:10px;opacity:0.6">' + t + '</span>'
+                    }).join('')
 
-                var bodyHtml = '<code style="font-size:11px;opacity:0.5">' + b.id + '</code>'
-                if (b.description) bodyHtml += '<br><span style="font-size:12px">' + b.description + '</span>'
+                var bodyHtml = ""
+                if (b.description) bodyHtml += '<span style="font-size:12px">' + b.description + '</span>'
                 if (tagHtml) bodyHtml += '<br>' + tagHtml
 
                 var event = {
                     unique_id: b.id,
                     start_date: sd,
-                    text: {
-                        headline: b.title,
-                        text: bodyHtml,
-                    },
+                    text: { headline: b.title, text: bodyHtml },
                 }
                 if (ed) event.end_date = ed
-
-                // cover 图片作为 media
-                if (b.cover) {
-                    event.media = { url: b.cover, thumbnail: b.cover }
-                }
+                if (b.cover) event.media = { url: b.cover, thumbnail: b.cover }
 
                 return event
             })
@@ -348,54 +522,167 @@
         }
 
         // ── 初始化时间轴与 Banner 联动 ───────────────────────────────────────────
-        function initGallery(banners) {
-            var timelineData = buildTimelineData(banners)
-
-            // id → banner 的快速查找表
+        function initGallery(allBanners, categoryMap) {
             var bannerMap = {}
-            banners.forEach(function (b) { bannerMap[b.id] = b })
+            allBanners.forEach(function (b) { bannerMap[b.id] = b })
 
-            var timeline = new TL.Timeline('timeline-embed', timelineData, {
-                timenav_height_percentage: 30,
-                marker_height_min: 40,
-                marker_width_min: 80,
-                start_at_slide: 1,
-                language: 'zh-cn',
-            })
+            var currentTimeline = null
+
+            // 根据筛选条件构建并（重）渲染时间轴
+            function renderTimeline(filter) {
+                // 计算当前筛选的 banner 列表
+                var banners
+                if (filter === 'all') {
+                    banners = allBanners
+                } else if (filter === 'latest') {
+                    banners = allBanners.filter(function (b) { return b.tags && b.tags.indexOf('latest') !== -1 })
+                } else {
+                    banners = allBanners.filter(function (b) { return b.category === filter })
+                }
+
+                // 无数据时显示占位
+                var embedEl = document.getElementById('timeline-embed')
+                if (!banners.length) {
+                    embedEl.innerHTML = '<p style="padding:60px;text-align:center;color:var(--text-secondary)">该分类暂无数据</p>'
+                    currentTimeline = null
+                    return
+                }
+
+                // 销毁旧时间轴（TimelineJS3 没有官方 destroy，直接清空 DOM 重建）
+                embedEl.innerHTML = ''
+                currentTimeline = null
+
+                var timelineData = buildTimelineData(banners, categoryMap)
+
+                currentTimeline = new TL.Timeline('timeline-embed', timelineData, {
+                    timenav_height_percentage: 50,
+                    marker_height_min: 40,
+                    marker_width_min: 100,
+                    start_at_slide: 1,
+                    scale_factor: 5,
+                    language: 'zh-cn',
+                })
+
+                currentTimeline.on('change', function (data) {
+                    if (data.unique_id) switchBanner(data.unique_id)
+                })
+
+                currentTimeline.on('loaded', function () {
+                    var first = timelineData.events[0]
+                    if (first) switchBanner(first.unique_id)
+                })
+            }
+
+            var catEl = document.getElementById('currentCat')
 
             function switchBanner(id) {
                 var b = bannerMap[id]
                 if (!b) return
                 nameEl.textContent = b.title
                 idEl.textContent = id
-                BiliBanner.init(id === 'latest' ? undefined : id)
+                // 分类标签：从对应的 cat-btn 取文字和颜色
+                var catBtn = b.category
+                    ? document.querySelector('.cat-btn[data-filter="' + b.category + '"]')
+                    : null
+                if (catBtn) {
+                    catEl.textContent = catBtn.textContent
+                    catEl.style.background = catBtn.style.getPropertyValue('--a')
+                } else {
+                    catEl.textContent = ''
+                    catEl.style.background = ''
+                }
+                BiliBanner.init(id === 'error' ? undefined : id)
             }
 
-            timeline.on('change', function (data) {
-                if (data.unique_id) switchBanner(data.unique_id)
+            // ── 筛选按钮绑定 ─────────────────────────────────────────────────────
+            var catBtns = document.querySelectorAll('.cat-btn')
+            var currentFilter = 'seasonal'
+
+            catBtns.forEach(function (btn) {
+                var c = btn.style.getPropertyValue('--c')
+                var h = btn.style.getPropertyValue('--h')
+                var a = btn.style.getPropertyValue('--a')
+
+                btn.addEventListener('mouseenter', function () {
+                    if (!btn.classList.contains('active')) btn.style.background = h
+                })
+                btn.addEventListener('mouseleave', function () {
+                    btn.style.background = btn.classList.contains('active') ? a : c
+                })
+                btn.addEventListener('click', function () {
+                    var filter = btn.dataset.filter
+                    if (filter === currentFilter) return
+                    currentFilter = filter
+
+                    // 更新按钮状态
+                    catBtns.forEach(function (b) {
+                        var bc = b.style.getPropertyValue('--c')
+                        var ba = b.style.getPropertyValue('--a')
+                        b.classList.remove('active')
+                        b.style.background = bc
+                    })
+                    btn.classList.add('active')
+                    btn.style.background = a
+
+                    renderTimeline(filter)
+                })
             })
 
-            timeline.on('loaded', function () {
-                // 默认切到第一个 banner（跳过 title slide）
-                var first = timelineData.events[0]
-                if (first) switchBanner(first.unique_id)
+            // 初始渲染
+            renderTimeline(currentFilter)
+        }
+
+        // ── 二阶段加载：索引 → 各分类文件并发 fetch ──────────────────────────────
+        function fetchJson(url) {
+            return fetch(url).then(function (res) {
+                if (!res.ok) throw new Error('加载失败：' + url + '（' + res.status + '）')
+                return res.json()
             })
         }
 
-        // ── 加载 bannerdata.json ────────────────────────────────────────────────────
-        fetch(GALLERY_JSON_URL)
-            .then(function (res) {
-                if (!res.ok) throw new Error('bannerdata.json 加载失败：' + res.status)
-                return res.json()
+        fetchJson(GALLERY_INDEX_URL)
+            .then(function (index) {
+                // 构造 categoryMap：id → { label, color }
+                var categoryMap = {}
+                    ; (index.categories || []).forEach(function (c) {
+                        categoryMap[c.id] = c
+                    })
+
+                // pinned 条目（如 latest）直接合入
+                var pinnedBanners = index.pinned || []
+
+                // 并发加载所有分类文件，跳过加载失败的（容错）
+                var categoryFiles = (index.categories || []).map(function (cat) {
+                    // 路径相对于 gallery.json 所在目录
+                    var base = GALLERY_INDEX_URL.substring(0, GALLERY_INDEX_URL.lastIndexOf('/') + 1)
+                    return fetchJson(base + cat.file)
+                        .then(function (items) {
+                            // 过滤掉说明用的 _comment 条目
+                            return items.filter(function (item) { return !item._comment })
+                        })
+                        .catch(function (err) {
+                            console.warn('[Gallery] 分类文件跳过：', cat.file, err.message)
+                            return []
+                        })
+                })
+
+                return Promise.all(categoryFiles).then(function (results) {
+                    // 合并：pinned 排最前，各分类文件依次追加
+                    var allBanners = pinnedBanners.slice()
+                    results.forEach(function (items) {
+                        allBanners = allBanners.concat(items)
+                    })
+                    return { banners: allBanners, categoryMap: categoryMap }
+                })
             })
-            .then(function (banners) {
-                initGallery(banners)
+            .then(function (data) {
+                initGallery(data.banners, data.categoryMap)
             })
             .catch(function (err) {
                 console.error('[Gallery]', err)
                 document.getElementById('timeline-embed').innerHTML =
                     '<p style="padding:40px;color:#f66;text-align:center">'
-                    + '数据加载失败，请确认 ' + GALLERY_JSON_URL + ' 可访问<br>'
+                    + '数据加载失败，请确认 ' + GALLERY_INDEX_URL + ' 可访问<br>'
                     + '<small>' + err.message + '</small></p>'
             })
     </script>

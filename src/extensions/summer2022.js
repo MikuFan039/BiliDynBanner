@@ -102,19 +102,22 @@ export default {
     const headerBar =
       container.parentElement?.querySelector(".bili-header__bar");
 
-    // ── 阶段一：脚本加载 + 初始化，整个过程保持 <base> 存在 ─────────────────
-    // initFn 内部会发出资源请求，必须在 <base> 存在期间完成，不能仅覆盖 loadScript
+    // ── 阶段一：脚本加载 + 初始化 ────────────────────────────────────────────
+    // <base> 覆盖整个阶段（initFn 内部会发出资源请求，必须在 <base> 存在期间完成）
+    // scriptEl 在加载完后立即移除，避免重复进入时累积 <script> 标签
     let extInstance = null;
     {
       const loadingBase = insertBase(baseUrl);
+      let scriptEl;
       try {
-        await loadScript(scriptUrl);
+        scriptEl = await loadScript(scriptUrl);
         extInstance = await window[extConfig.globalName](extContainer);
       } catch (err) {
         console.error("[summer2022] 初始化失败", err);
         return;
       } finally {
         loadingBase.remove();
+        scriptEl?.remove();
       }
     }
 
