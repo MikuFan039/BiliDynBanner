@@ -119,9 +119,9 @@ dist/
 
 1. 不支持[`Safari`浏览器](src/components/animated-banner/index.vue#L33 "官方：因性能问题禁用")
 2. 需支持[`WebGL2`](https://developer.mozilla.org/zh-CN/docs/Web/API/WebGL_API#webgl_2)
-3. 需支持[`Shadow DOM`]("https://developer.mozilla.org/zh-CN/docs/Web/API/Web_components/Using_shadow_DOM" "影子 DOM")
+3. 需支持[`Shadow DOM`](https://developer.mozilla.org/zh-CN/docs/Web/API/Web_components/Using_shadow_DOM "影子 DOM")
 4. CSS 需支持[`image-rendering: pixelated`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Reference/Properties/image-rendering#pixelated)
-5. 需支持部分[`ES2020`语法]("https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Optional_chaining" "可选链运算符")
+5. 需支持部分[`ES2020`语法](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Optional_chaining "可选链运算符")
 
 ### 快速检测：
 
