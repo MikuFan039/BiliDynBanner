@@ -49,10 +49,10 @@
         {
             "id": "latest",
             "title": "最新",
-            "description": "最新发布的 Banner",
-            "startDate": null,
+            "description": "官方最新发布的 Banner（当前2026春）",
+            "startDate": "2026-04-24",
             "endDate": null,
-            "cover": null,
+            "cover": "res/bilibanner/2026spring/bfs/archive/cc634ec77d2755641d5ed3f392c9b7e065a88aae.png",
             "category": null,
             "group": null,
             "tags": [

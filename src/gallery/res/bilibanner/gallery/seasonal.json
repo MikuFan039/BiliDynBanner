@@ -445,13 +445,28 @@
         "title": "2025 冬",
         "description": "哔哩哔哩首页于2025年冬季展示的版图（实际上于2026年发布，但确实属于25年冬季）",
         "startDate": "2026-01-09",
-        "endDate": null,
+        "endDate": "2026-04-23",
         "cover": "res/bilibanner/2025winter/bfs/archive/a8dcb9d05c22e7e5cfb1bbd0d97092f4edd357ef.png",
         "category": "seasonal",
         "group": "winter",
         "tags": [
             "2025",
             "winter",
+            "parallax"
+        ]
+    },
+    {
+        "id": "2026spring",
+        "title": "2026 春",
+        "description": "哔哩哔哩首页于2026年春季展示的版图（官方更新的时候，春季已经开始一个多月了...）",
+        "startDate": "2026-04-24",
+        "endDate": null,
+        "cover": "res/bilibanner/2026spring/bfs/archive/cc634ec77d2755641d5ed3f392c9b7e065a88aae.png",
+        "category": "seasonal",
+        "group": "spring",
+        "tags": [
+            "2026",
+            "spring",
             "parallax"
         ]
     }

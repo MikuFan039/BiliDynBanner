@@ -127,6 +127,7 @@ dist/
 
 可将以下脚本粘贴到控制台执行
 
+<!-- prettier-ignore -->
 ```javascript
 const supportWebGL2=!!document.createElement("canvas").getContext("webgl2"),supportPixel="undefined"!=typeof CSS&&CSS.supports("image-rendering: pixelated"),supportShadow=!!document.createElement("div").attachShadow,supportMemory=!(navigator.deviceMemory&&navigator.deviceMemory<4),supportNetwork=!["slow-2g","2g"].includes(navigator.connection?.effectiveType),notSafari=!/^((?!chrome|android).)*safari/i.test(navigator.userAgent),supportOptionalChaining=(()=>{try{return eval("const obj = {}; obj?.prop;"),!0}catch(o){return!1}})();console.log("检测结果：",{supportWebGL2:supportWebGL2,supportPixel:supportPixel,supportShadow:supportShadow,supportMemory:supportMemory,supportNetwork:supportNetwork,notSafari:notSafari,supportOptionalChaining:supportOptionalChaining}),supportWebGL2&&supportPixel&&supportShadow&&supportMemory&&supportNetwork&&notSafari||console.warn("设备未达标"),console.log("检测通过");
 ```

@@ -71,7 +71,7 @@ function processLayers(layersObj, downloadTasks) {
         if (src && src.startsWith("https://i0.hdslb.com/bfs/")) {
           downloadTasks.add(src);
           const { folder, filename } = extractPathFromUrl(src);
-          resource.src = path.join(folder, filename).replace(/\\/g, "/");
+          resource.src = path.join("bfs", folder, filename).replace(/\\/g, "/");
         }
       }
     }
@@ -93,9 +93,9 @@ function processSingleUrl(url, downloadTasks) {
   ) {
     downloadTasks.add(url);
     const { folder, filename } = extractPathFromUrl(url);
-    return path.join(folder, filename).replace(/\\/g, "/");
+    return path.join("bfs", folder, filename).replace(/\\/g, "/");
   }
-  return url; // 非标准 BFS 链接保持原样（但本例中应都是 BFS 链接）
+  return url; // 非标准 BFS 链接保持原样
 }
 
 /**
@@ -134,7 +134,8 @@ async function main() {
     }
 
     const rootDir = path.join(__dirname, ".."); // 项目根目录
-    const baseDir = path.join(rootDir, "public", folderName); // 最终保存位置
+    const baseDir = path.join(rootDir, "public", folderName); // 数据保存位置
+    const resDir = path.join(baseDir, "bfs"); // 资源文件位置
     console.log(`保存目录: ${baseDir}`);
 
     // 创建主目录
@@ -171,7 +172,7 @@ async function main() {
       foldersNeeded.add(folder);
     }
     for (const folder of foldersNeeded) {
-      const folderPath = path.join(baseDir, folder);
+      const folderPath = path.join(resDir, folder);
       await fsPromises.mkdir(folderPath, { recursive: true });
     }
 
@@ -187,7 +188,7 @@ async function main() {
         if (!url) break;
 
         const { folder, filename } = extractPathFromUrl(url);
-        const destPath = path.join(baseDir, folder, filename);
+        const destPath = path.join(resDir, folder, filename);
 
         try {
           await fsPromises.access(destPath);
